@@ -18,9 +18,6 @@ development:
   adapter: postgresql
   encoding: unicode
   database: fitbyfriday_development
-  pool: 5
-  username: fitbyfriday
-  password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -47,14 +44,8 @@ test:
   adapter: postgresql
   encoding: unicode
   database: fitbyfriday_test
-  pool: 5
-  username: fitbyfriday
-  password:
 
 production:
   adapter: postgresql
   encoding: unicode
   database: fitbyfriday_production
-  pool: 5
-  username: fitbyfriday
-  password:
