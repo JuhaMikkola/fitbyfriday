@@ -1,0 +1,24 @@
+<h1>Create a new workout</h1>
+
+<%= form_for @workout do |w| %>
+
+  <div class="field">
+  <%= w.label :activity %>
+  <%= w.text_field :activity %><br>
+  </div>
+
+  <div class="field">
+  <%= w.label :location %>
+  <%= w.text_field :location %>
+  </div>
+
+  <div class="field">
+  <%= w.label :start_time %>
+  <%= w.datetime_select :start_time, :ampm => true, :minute_step => 5 %>
+  </div>
+
+  <div class="action">
+  <%= w.submit %>
+  </div>
+
+<% end %>

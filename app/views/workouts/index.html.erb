@@ -1,0 +1,11 @@
+<h1>Workouts</h1>
+
+<% @workouts.each do |w| %>
+
+  <div>
+  <%= link_to w.activity, workout_path(w.id) %><br>
+  <%= w.location %><br>
+  <%= w.start_time %>
+  </div>
+
+<% end %>
