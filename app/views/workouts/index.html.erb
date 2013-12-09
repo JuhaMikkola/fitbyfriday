@@ -1,4 +1,7 @@
-<h1>Workouts</h1>
+<h1>FitByFriday</h1>
+
+<%= link_to "New Workout", new_workout_path %><br>
+<br>
 
 <% @workouts.each do |w| %>
 
@@ -6,6 +9,6 @@
   <%= link_to w.activity, workout_path(w.id) %><br>
   <%= w.location %><br>
   <%= w.start_time %>
-  </div>
+  </div><br>
 
 <% end %>
