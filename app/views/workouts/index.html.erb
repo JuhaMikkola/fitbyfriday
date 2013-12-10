@@ -3,13 +3,52 @@
 <%= link_to "New Workout", new_workout_path %><br>
 <br>
 
+
+<h3>Monday</h3>
 <% @workouts.each do |w| %>
-
-  <div>
-  <%= link_to w.activity, workout_path(w.id) %><br>
-  <%= w.location %><br>
-  <%= w.start_time.to_date %>
-  </div><br>
-
+  <% if w.start_time.monday? %>
+    <%= link_to w.activity, workout_path(w.id) %> at <%= w.start_time.strftime("%I:%M %p") %>
+  <% end %>
 <% end %>
 
+<h3>Tuesday</h3>
+<% @workouts.each do |w| %>
+  <% if w.start_time.tuesday? %>
+    <%= link_to w.activity, workout_path(w.id) %> at <%= w.start_time.strftime("%I:%M %p") %><br />
+  <% end %>
+<% end %>
+
+<h3>Wednesday</h3>
+<% @workouts.each do |w| %>
+  <% if w.start_time.wednesday? %>
+    <%= link_to w.activity, workout_path(w.id) %> at <%= w.start_time.strftime("%I:%M %p") %>
+  <% end %>
+<% end %>
+
+<h3>Thursday</h3>
+<% @workouts.each do |w| %>
+  <% if w.start_time.thursday? %>
+    <%= link_to w.activity, workout_path(w.id) %> at <%= w.start_time.strftime("%I:%M %p") %>
+  <% end %>
+<% end %>
+
+<h3>Friday</h3>
+<% @workouts.each do |w| %>
+  <% if w.start_time.friday? %>
+    <%= link_to w.activity, workout_path(w.id) %> at <%= w.start_time.strftime("%I:%M %p") %>
+  <% end %>
+<% end %>
+
+<h3>Saturday</h3>
+<% @workouts.each do |w| %>
+  <% if w.start_time.saturday? %>
+    <%= link_to w.activity, workout_path(w.id) %> at <%= w.start_time.strftime("%I:%M %p") %>
+  <% end %>
+<% end %>
+
+<h3>Sunday</h3>
+<% @workouts.each do |w| %>
+  <% if w.start_time.sunday? %>
+    <%= link_to w.activity, workout_path(w.id) %> at <%= w.start_time.strftime("%I:%M %p") %>
+  <% end %>
+<% end %>
