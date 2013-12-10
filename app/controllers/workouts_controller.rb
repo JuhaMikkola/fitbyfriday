@@ -1,7 +1,8 @@
 class WorkoutsController < ApplicationController
 
   def index
-    @workouts = Workout.all
+    @workouts = Workout.all.group_by { |w| w.start_time.to_date.beginning_of_week }
+    @workouts = @workouts[DateTime.now.beginning_of_week.to_date]
   end
 
   def show
