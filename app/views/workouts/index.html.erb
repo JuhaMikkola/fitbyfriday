@@ -1,10 +1,12 @@
 <h1>FitByFriday</h1>
-<h2>This Week's Workouts</h2>
+
 <%= link_to "New Workout", new_workout_path %><br>
 <br>
 
-<% @workouts.each do |w| %>
 
+  
+<% @workouts.each do |w| %>
+    <%= w.start_time.strftime("%A") %>
   <div>
   <%= link_to w.activity, workout_path(w.id) %><br>
   <%= w.location %><br>
@@ -12,4 +14,3 @@
   </div><br>
 
 <% end %>
-
