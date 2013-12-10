@@ -3,12 +3,6 @@ class WorkoutsController < ApplicationController
   def index
     @workouts = Workout.all.group_by { |w| w.start_time.to_date.beginning_of_week }
     @workouts = @workouts[DateTime.now.beginning_of_week.to_date]
-    
-<<<<<<< HEAD
-=======
-    #@workouts = @workouts.group_by { |w| w.start_time.to_date.beginning_of_day}
-
->>>>>>> e89bb3b366f9e2a2a255720fa33755e8c50856de
     # @workouts = @workouts[DateTime.now.next_week.beginning_of_week.to_date]
     @workouts.sort!{|t1,t2|t1.start_time <=> t2.start_time}
   end
