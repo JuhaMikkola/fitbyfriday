@@ -8,7 +8,7 @@
   <div>
   <%= link_to w.activity, workout_path(w.id) %><br>
   <%= w.location %><br>
-  <%= w.start_time %>
+  <%= w.start_time.to_date %>
   </div><br>
 
 <% end %>
