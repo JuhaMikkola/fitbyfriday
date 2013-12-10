@@ -1,5 +1,7 @@
 Fitbyfriday::Application.routes.draw do
 
+  resources :users
+
   root 'workouts#index'
 
   resources :workouts
