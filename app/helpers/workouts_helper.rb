@@ -1,6 +1,5 @@
 module WorkoutsHelper
-  def days
-    days = [["Monday",1], ["Tuesday",2], ["Wednesday",3],
-     ["Thursday",4], ["Friday", 5], ["Saturday",6], ["Sunday",0]]
+  def days_of_week
+    %w[monday tuesday wednesday thursday friday saturday sunday]
   end
 end
