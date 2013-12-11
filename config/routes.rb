@@ -1,13 +1,15 @@
 Fitbyfriday::Application.routes.draw do
 
-  get "inivitations/new"
-  get "inivitations/show"
   root 'workouts#index'
  
   resources :user_sessions
   resources :users
+  #resources :inivitations
 
-  resources :workouts
+  resources :workouts do
+    post 'invite', on: :member
+  end
+
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout

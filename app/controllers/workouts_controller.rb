@@ -51,6 +51,11 @@ class WorkoutsController < ApplicationController
     redirect_to workouts_path
   end
 
+  def invite
+    @workout = Workout.find(params[:id])
+    @target = User.find_by_email(params[:email])
+  end
+
   private
   def workout_params
     params.require(:workout).permit(:activity, :start_time, :location, :creator_id)

@@ -11,4 +11,19 @@
 
 <h3><%= link_to "Invite a Friend", '#' %></h3>
 
+
+<%= form_tag workouts_path, :method => :post do %>
+  
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email %>
+  </div>
+ 
+  <div class="actions">
+    <%= submit_tag "Login" %>
+  </div>
+<% end %>
+
+<br>
+
 <%= link_to "Back", root_path %>
