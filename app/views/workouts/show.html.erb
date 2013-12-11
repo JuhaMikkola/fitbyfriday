@@ -11,8 +11,7 @@
 
 <h3><%= link_to "Invite a Friend", '#' %></h3>
 
-
-<%= form_tag workouts_path, :method => :post do %>
+<%= form_tag invite_workout_path, :method => :post do %>
   
   <div class="field">
     <%= label_tag :email %><br />
@@ -20,7 +19,7 @@
   </div>
  
   <div class="actions">
-    <%= submit_tag "Login" %>
+    <%= submit_tag "Invite Friend" %>
   </div>
 <% end %>
 

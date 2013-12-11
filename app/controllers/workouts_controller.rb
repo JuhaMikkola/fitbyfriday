@@ -54,6 +54,12 @@ class WorkoutsController < ApplicationController
   def invite
     @workout = Workout.find(params[:id])
     @target = User.find_by_email(params[:email])
+    @invite = Invitation.new
+    @invite.target_id = @target.id 
+    @invite.sender_id = current_user.id
+    @invite.workout_id = @workout.id
+    @invite.save
+    redirect_to workouts_path
   end
 
   private
