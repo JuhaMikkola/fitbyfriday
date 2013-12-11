@@ -13,6 +13,13 @@
     <% end %>
   <% end %>
 
+  <h2>Pending Invites<h2>
+    <p>
+    <% @user.received_requests.each do |r| %>
+      <%= Workout.find(r.workout_id).activity %> with <%= User.find(r.sender_id).username %><br>
+    <% end %>
+  </p>
+
 <% else %>
 
 <h2>Sign up or Login</h2>
