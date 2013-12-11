@@ -7,6 +7,5 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
-
-  has_many :workouts
+  has_many :workouts, foreign_key: "creator_id"
 end
