@@ -7,10 +7,10 @@
 </ul>
 
 <h2>Who's Attending:</h2>
-<p><%= @workout.creator.username %></p>
-<p>
+<p><%= @workout.creator.username %><br>
+
   <% @workout.invitations.each do |i| %>
-  <%= i.target.username %>
+  <%= link_to i.target.username, "/users/#{i.target.id}" %><br>
   <% end %>
 </p>
 
