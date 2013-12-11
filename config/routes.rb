@@ -1,5 +1,7 @@
 Fitbyfriday::Application.routes.draw do
 
+  get "inivitations/new"
+  get "inivitations/show"
   root 'workouts#index'
  
   resources :user_sessions
