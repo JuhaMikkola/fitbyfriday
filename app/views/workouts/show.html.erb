@@ -6,6 +6,7 @@
   <li><%= @workout.start_time %></li>
 </ul>
 
-h2
+<h2>Who's Attending:</h2>
+<p><%= @workout.creator.username %></p>
 
 <%= link_to "Back", root_path %>
