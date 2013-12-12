@@ -1,0 +1,2 @@
+<h3><%= @invitation.sender.username %> has invited you to <%= @invitation.workout.activity %></h3>
+<h4><%= link_to "Accept", accept_workout_invitation_path, method: :post %> or <%= link_to "Decline", decline_workout_invitation_path, :method => :delete %></h4>

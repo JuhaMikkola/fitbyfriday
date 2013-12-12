@@ -56,8 +56,9 @@ class WorkoutsController < ApplicationController
     @invite.sender_id = current_user.id
     @invite.target_id = @target.id
     @invite.save
+    redirect_to @workout
   end
-  
+
   private
   def workout_params
     params.require(:workout).permit(:activity, :start_time, :location, :creator_id)

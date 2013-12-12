@@ -2,7 +2,7 @@
     <p>
     <% @user.received_requests.each do |r| %>
       <% if r.confirmed == false %>
-        <%= Workout.find(r.workout_id).activity %> with <%= User.find(r.sender_id).username %><br>
+      <%= link_to r.workout.activity + " with " + r.sender.username, workout_invitation_url(r.workout, r) %><br>
       <% end %>
     <% end %>
   </p>
