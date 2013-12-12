@@ -8,10 +8,13 @@ Fitbyfriday::Application.routes.draw do
 
   resources :workouts do
     post 'invite', on: :member
+    resources :invitations do
+      post 'accept', on: :member
+      delete 'decline', on: :member
+    end
   end
 
   resources :friendships
-
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout

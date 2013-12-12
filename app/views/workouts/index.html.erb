@@ -1,17 +1,12 @@
 <h1>FitByFriday</h1>
 
-<% if current_user %>
-  <%= link_to "New Workout", new_workout_path %><br>
-  <br>
+<%= link_to "New Workout", new_workout_path, class: "button" %><br>
 
-  <% days_of_week.each do |day| %>
-    <h3><%= day.capitalize %></h3>
-    <% @workouts.each do |w| %>
-      <% if w.start_time.send( day + '?' ) %>
-        <%= link_to w.activity, workout_path(w.id) %> at <%= w.start_time.strftime("%I:%M %p") %><br />
-      <% end %>
-    <% end %>
-  <% end %>
+<% if current_user %>
+
+  <%= render 'workouts' %>
+
+  <%= render 'invites' %>
 
 <% else %>
 
