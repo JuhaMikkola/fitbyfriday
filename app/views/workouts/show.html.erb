@@ -7,14 +7,16 @@
 </ul>
 
 <h2>Who's Attending:</h2>
-<p><%= @workout.creator.username %><br>
+<% @workout.user_workouts.each do |w| %>
+  <%= User.find(w.user_id).username %>
+<% end %>
 
-  <% @workout.invitations.each do |i| %>
-  <%= link_to i.target.username, "/users/#{i.target.id}" %><br>
-  <% end %>
-</p>
+<h2>Awaiting Confirmation</h2>
 
-<h3><%= link_to "Invite a Friend", '#' %></h3>
+
+
+<h3>Invite a Friend</h3>
+<%= @workout.invitations.all %>
 
 <%= form_tag invite_workout_path, :method => :post do %>
   
