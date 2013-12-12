@@ -1,0 +1,16 @@
+<% if @user.workouts.any? %>
+
+    <% days_of_week.each do |day| %>
+      <h3><%= day.capitalize %></h3>
+      <% @workouts.each do |w| %>
+        <% if w.start_time.send( day + '?' ) %>
+          <%= link_to w.activity, workout_path(w.id) %> at <%= w.start_time.strftime("%I:%M %p") %><br />
+        <% end %>
+      <% end %>
+    <% end %>
+
+  <% else %>
+
+    <h3>No Workouts Scheduled</h3>
+
+  <% end %>  

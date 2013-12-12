@@ -1,0 +1,8 @@
+<h2>Pending Invites<h2>
+    <p>
+    <% @user.received_requests.each do |r| %>
+      <% if r.confirmed == false %>
+        <%= Workout.find(r.workout_id).activity %> with <%= User.find(r.sender_id).username %><br>
+      <% end %>
+    <% end %>
+  </p>
