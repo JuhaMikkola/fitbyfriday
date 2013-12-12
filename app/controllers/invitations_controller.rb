@@ -15,4 +15,11 @@ class InvitationsController < ApplicationController
     @invitation.save
     redirect_to workouts_path
   end
+
+  def decline
+    @invitation = Invitation.find(params[:id])
+    @invitation.destroy
+    # Send email or text to sender to notify them that
+    redirect_to workouts_path
+  end
 end

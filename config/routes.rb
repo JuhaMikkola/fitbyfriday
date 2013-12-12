@@ -10,6 +10,7 @@ Fitbyfriday::Application.routes.draw do
     post 'invite', on: :member
     resources :invitations do
       post 'accept', on: :member
+      delete 'decline', on: :member
     end
   end
 
