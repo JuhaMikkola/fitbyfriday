@@ -1,4 +1,10 @@
-<h1>FitByFriday</h1>
+
+
+
+
+    <p><%# link_to (image_tag "img.png") %></p>
+    </div>
+  </div>
 
 <% if current_user %>
   <%= link_to "New Workout", new_workout_path %><br>
@@ -15,6 +21,6 @@
 
 <% else %>
 
-<h2>Sign up or Login</h2>
+<h2><%= link_to "Sign Up", new_user_path  %> or <%= link_to "Login", login_path %></h2>
 
 <% end %>
