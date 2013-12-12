@@ -8,10 +8,12 @@ Fitbyfriday::Application.routes.draw do
 
   resources :workouts do
     post 'invite', on: :member
+    resources :invitations
   end
 
-
-  get 'login' => 'user_sessions#new', :as => :login
+  
+  
+get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
 
   # The priority is based upon order of creation: first created -> highest priority.
