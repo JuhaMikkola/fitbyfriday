@@ -12,11 +12,13 @@
 <% end %>
 
 <h2>Awaiting Confirmation</h2>
-
-
+<% @workout.invitations.each do |i| %>
+  <% if i.confirmed == false %>
+    <%= User.find(i.target_id).username %><br>
+  <% end %>
+<% end %>  
 
 <h3>Invite a Friend</h3>
-<%= @workout.invitations.all %>
 
 <%= form_tag invite_workout_path, :method => :post do %>
   
