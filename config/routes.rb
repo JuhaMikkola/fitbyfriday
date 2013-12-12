@@ -10,6 +10,8 @@ Fitbyfriday::Application.routes.draw do
     post 'invite', on: :member
   end
 
+  resources :friendships
+
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
