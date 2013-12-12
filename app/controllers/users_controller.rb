@@ -29,6 +29,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+
+        # send email
+
         format.html { redirect_to @user, notice: "Welcome #{@user.username}" }
         format.json { render action: 'show', status: :created, location: @user }
       else
