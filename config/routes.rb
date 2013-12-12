@@ -14,9 +14,9 @@ Fitbyfriday::Application.routes.draw do
     end
   end
 
-  
-  
-get 'login' => 'user_sessions#new', :as => :login
+  resources :friendships
+
+  get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
 
   # The priority is based upon order of creation: first created -> highest priority.

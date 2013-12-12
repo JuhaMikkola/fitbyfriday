@@ -1,11 +1,40 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "tiny button" %>
+
+Invite a friend 
+
+<h2>Profile:</h2>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
 
+<h2>Friends with:</h2>
 
+<p>
 
+  <% @user.sent_friendships.each do |i| %>
+
+    <%= i.target.username %>
+
+  <% end %>
+
+</p>
+
+<p>
+
+  <% @user.target_friendships.each do |i| %>
+
+    <%= i.sender.username %>
+
+  <% end %>
+  
+</p>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
