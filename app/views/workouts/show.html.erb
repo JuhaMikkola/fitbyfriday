@@ -8,7 +8,7 @@
 
 <h2>Who's Attending:</h2>
 <% @workout.user_workouts.each do |w| %>
-  <%= User.find(w.user_id).username %>
+  <%= User.find(w.user_id).username %><br>
 <% end %>
 
 <h2>Awaiting Confirmation</h2>

@@ -8,7 +8,9 @@ Fitbyfriday::Application.routes.draw do
 
   resources :workouts do
     post 'invite', on: :member
-    resources :invitations
+    resources :invitations do
+      post 'accept', on: :member
+    end
   end
 
   
