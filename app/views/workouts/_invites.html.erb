@@ -1,0 +1,8 @@
+<h2>Pending Invites<h2>
+    <p>
+    <% @user.received_requests.each do |r| %>
+      <% if r.confirmed == false %>
+      <%= link_to r.workout.activity + " with " + r.sender.username, workout_invitation_url(r.workout, r) %><br>
+      <% end %>
+    <% end %>
+  </p>

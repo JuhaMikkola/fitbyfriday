@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
-  has_many :workouts, foreign_key: "creator_id"
+  has_many :user_workouts
+  has_many :workouts, through: :user_workouts
 
   #has_many :invitations, foreign_key: "target_id"
 
