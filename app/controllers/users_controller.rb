@@ -31,6 +31,7 @@ class UsersController < ApplicationController
       if @user.save
 
         # send email
+        UserMailer.signup_confirmation(@user).deliver
 
         format.html { redirect_to @user, notice: "Welcome #{@user.username}" }
         format.json { render action: 'show', status: :created, location: @user }
