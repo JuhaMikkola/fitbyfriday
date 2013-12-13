@@ -16,6 +16,14 @@ ActiveRecord::Schema.define(version: 20131211235808) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "friendships", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "target_id"
+    t.boolean  "confirmed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "invitations", force: true do |t|
     t.integer  "workout_id"
     t.integer  "sender_id"
