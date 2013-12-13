@@ -27,37 +27,35 @@
          <a href="#"><span>menu</span></a>
         </li>
 
-
-
-    <section class="top-bar-section">
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="divider"></li>
-      <li><%= link_to "DASHBOARD", workouts_path %></li>
-        <li class="divider"></li>
-      
-        <li class="has-dropdown">
-          <a href="#">PROFILE</a>
-          
-          <% if current_user %>
-      
-          <ul class="dropdown">
-            <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
-            <li><%= link_to "Logout", :logout, method: :post %></li>
-            <% else %>
-            
-            <li><%= link_to "Login", :login %></li>
-              <% end %>
-           
+        <section class="top-bar-section">
+        <!-- Right Nav Section -->
+          <ul class="right">
+            <li class="divider"></li>
+            <li><%= link_to "DASHBOARD", workouts_path %></li>
+            <li class="divider"></li>
+        
+            <li class="has-dropdown">
+              <a href="#">PROFILE</a>
+              
+              <ul class="dropdown">
+                <% if current_user %>
+                  <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+                  <li><%= link_to "Logout", :logout, method: :post %></li>
+                <% else %>
+                  <li><%= link_to "Login", :login %></li>
+                <% end %>
+              </ul>
+            </li>
           </ul>
-        </li>
+        </section>
       </ul>
-    </section>
-  </nav>
+    </nav>
 
-  <div>
-    <p id="notice"><%= flash[:notice] %></p>
-    <p id="alert"><%= flash[:alert] %></p>
+  <div class="row">
+    <div class="small-12 columns">
+      <p id="notice"><%= flash[:notice] %></p>
+      <p id="alert"><%= flash[:alert] %></p>
+    </div>
   </div>
  
   <div class="row">
