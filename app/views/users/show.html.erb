@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "tiny button" %>
 
-Invite a friend 
 
 <h2>Profile:</h2>
 
@@ -12,29 +10,73 @@ Invite a friend
 </p>
 <p>
   <strong>Email:</strong>
-  <%= @user.email %>
+  <%= link_to "#{@user.email}", "mailto:#{@user.email}" %>
 </p>
 
-<h2>Friends with:</h2>
+<%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
 
-<p>
+<h2>Friends:</h2>
 
+<ul>
   <% @user.sent_friendships.each do |i| %>
 
-    <%= i.target.username %>
+      <% if i.confirmed == true %>
+
+      <li><%= link_to i.target.username, user_path(i.target.id) %></li>
+        
+      <% end %>
 
   <% end %>
-
-</p>
-
-<p>
 
   <% @user.target_friendships.each do |i| %>
 
-    <%= i.sender.username %>
+    <% if i.confirmed == true %>
+
+    <li><%= link_to i.sender.username, user_path(i.sender.id) %></li>
+        
+    <% end %>
 
   <% end %>
-  
-</p>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</ul>
+
+<h2>Pending Friends:</h2>
+
+<h3>Friends you have requested:</h3>
+
+<ul>
+  <% @user.sent_friendships.each do |i| %>
+
+    <% if i.confirmed == false || i.confirmed == nil %>
+
+      <li><%= link_to i.target.username, user_path(i.target.id) %></li>
+
+    <% end %>
+
+  <% end %>
+
+</ul>
+
+<h3>Friends that have requested you:</h3>
+
+<ul>
+  <% @user.target_friendships.each do |i| %>
+
+    <% if i.confirmed == false || i.confirmed == nil %>
+
+      <li>
+
+        <%= link_to i.sender.username, user_path(i.sender.id) %>
+
+        <%= link_to 'Confirm Friendship', edit_friendship_path(id: i.id), class: "success tiny button" %> 
+
+      </li>
+
+    <% end %>
+
+  <% end %>
+</ul>
+
+
+
+<%= link_to 'Edit', edit_user_path(@user), class: "tiny button" %> 
+<%= link_to 'Back', users_path, class: "tiny button" %>
