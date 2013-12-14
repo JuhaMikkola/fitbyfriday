@@ -17,6 +17,10 @@ Fitbyfriday::Application.routes.draw do
 
   resources :friendships
 
+  resources :ratings do
+    post 'confirm', on: :member
+  end
+
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
 

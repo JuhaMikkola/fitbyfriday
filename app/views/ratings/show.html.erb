@@ -1,0 +1,7 @@
+<h1>Workout Rating</h1>
+
+Did <%= @rating.rated.username %> show up?
+
+<%= link_to "Yes", confirm_rating_path(@rating), :method => :post, class: "button" %>
+
+<%= link_to "No", '#', class: "button" %>
