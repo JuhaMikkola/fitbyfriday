@@ -26,6 +26,11 @@
   <% end %>
 <% end %>
 <h3>Invite a Friend</h3>
+  <% if @invite.present? %>
+  <% if @invite.errors.any? %>
+  ERROR
+  <% end %>
+  <% end %>
 
 <%= form_tag invite_workout_path, :method => :post do %>
   
