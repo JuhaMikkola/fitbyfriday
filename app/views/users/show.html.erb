@@ -39,44 +39,46 @@
   <% end %>
 </ul>
 
-<h2>Pending Friends:</h2>
+<% if current_user.id == @user.id %>
 
-<h3>Friends you have requested:</h3>
+  <h2>Pending Friends:</h2>
 
-<ul>
-  <% @user.sent_friendships.each do |i| %>
+  <h3>Friends you have requested:</h3>
 
-    <% if i.confirmed == false || i.confirmed == nil %>
+  <ul>
+    <% @user.sent_friendships.each do |i| %>
 
-      <li><%= link_to i.target.username, user_path(i.target.id) %></li>
+      <% if i.confirmed == false || i.confirmed == nil %>
 
-    <% end %>
+        <li><%= link_to i.target.username, user_path(i.target.id) %></li>
 
-  <% end %>
-
-</ul>
-
-<h3>Friends that have requested you:</h3>
-
-<ul>
-  <% @user.target_friendships.each do |i| %>
-
-    <% if i.confirmed == false || i.confirmed == nil %>
-
-      <li>
-
-        <%= link_to i.sender.username, user_path(i.sender.id) %>
-
-        <%= link_to 'Confirm Friendship', edit_friendship_path(id: i.id), class: "success tiny button" %> 
-
-      </li>
+      <% end %>
 
     <% end %>
 
-  <% end %>
-</ul>
+  </ul>
 
+  <h3>Friends that have requested you:</h3>
 
+  <ul>
+    <% @user.target_friendships.each do |i| %>
+
+      <% if i.confirmed == false || i.confirmed == nil %>
+
+        <li>
+
+          <%= link_to i.sender.username, user_path(i.sender.id) %>
+
+          <%= link_to 'Confirm Friendship', edit_friendship_path(id: i.id), class: "success tiny button" %> 
+
+        </li>
+
+      <% end %>
+
+    <% end %>
+  </ul>
+
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user), class: "tiny button" %> 
 <%= link_to 'Back', users_path, class: "tiny button" %>
