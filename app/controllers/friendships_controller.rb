@@ -17,9 +17,19 @@ class FriendshipsController < ApplicationController
     end
   end
 
+  def edit
+    @friendship = Friendship.find(params[:id])
+    @friendship.confirmed = true
+    if @friendship.save 
+      redirect_to users_path
+    else
+      render 'index'  
+    end
+  end
+
   private
   def friendship_params
-    params.require(:friendship).permit(:target_id)
+    params.require(:friendship).permit(:target_id, :id)
   end
   
 end
