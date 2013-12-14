@@ -1,5 +1,14 @@
 <h1>Create a new workout</h1>
 
+<% if @workout.errors.any? %>
+  <h3>You fucked up!</h3>
+  <ul>
+  <% @workout.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
 <%= form_for @workout do |w| %>
 
   <div class="field">

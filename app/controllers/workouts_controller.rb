@@ -50,13 +50,17 @@ class WorkoutsController < ApplicationController
 
   def invite
     @workout = Workout.find(params[:id])
-    @target = User.find_by_email(params[:email])
-    @invite = Invitation.new
-    @invite.workout_id = @workout.id
-    @invite.sender_id = current_user.id
-    @invite.target_id = @target.id
-    @invite.save
-    redirect_to @workout
+      if User.find_by_email(params[:email]) == nil
+        redirect_to @workout
+      else
+        @target = User.find_by_email(params[:email])
+        @invite = Invitation.new
+        @invite.workout_id = @workout.id
+        @invite.sender_id = current_user.id
+        @invite.target_id = @target.id
+        @invite.save
+        redirect_to @workout
+      end
   end
 
   private
