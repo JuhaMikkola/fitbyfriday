@@ -1,1 +1,6 @@
-<h3>Confirm these workouts:</h3>
+<% if @user.sent_ratings.where(:confirmed => nil).any? %>
+  <h3>Confirm these workouts:</h3>
+  <% @user.sent_ratings.where(:confirmed => nil).each do |rating| %>
+    <%= link_to rating.workout.activity, rating_path(rating.id) %> with <%= rating.rated.username %><br>
+  <% end %>
+<% end %>

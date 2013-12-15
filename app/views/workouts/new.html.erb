@@ -22,8 +22,13 @@
   </div>
 
   <div class="field">
+  <%= w.label :start_date %>
+  <%= w.date_select :start_date %>
+  </div>
+
+  <div class="field">
   <%= w.label :start_time %>
-  <%= w.datetime_select :start_time, :ampm => true, :minute_step => 5 %>
+  <%= w.time_select :start_time, :ampm => true, :minute_step => 5 %>
   </div>
 
   <div class="action">
