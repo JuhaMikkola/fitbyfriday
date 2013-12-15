@@ -1,3 +1,134 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* Custom Stylesheet */
+body, html {
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+      background:#f2f2f2;
+      text-align: center;
+}
+
+body html {
+  padding: 0;
+  width: 100%;
+  float: left;
+  font-family: 'Roboto',Arial,sans-serif;
+}
+
+body .header{
+  color: #ecf0f1;
+}
+
+.main p {
+  color: #000;
+  font-size: 16px;
+  font-weight: 100;
+}
+.nav-top {
+  background: blue;
+}
+.nav-top a {
+  color: #effff;
+}
+
+/* ALL DEMO */
+h1 {
+  color: #000;
+  font-family: 'Roboto',Arial,sans-serif;
+  font-size: 64px;
+}
+
+h1 span {
+  font-size: 44px;
+  display: block;
+}
+
+.menu {
+  text-align: left;
+}
+
+.menu, .header, .nav-top {
+  margin-bottom: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.main{
+  margin: 50px auto;
+  max-width: 1000px;
+}
+
+h1 small {
+  font-size: 25px;
+  color: #424242;
+  font-style: italic;
+  display: block;
+  font-weight: normal;
+}
+
+.demo1 .main{
+  overflow: hidden;
+  position: relative;
+}
+.page_container {
+  float: none;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+}
+.page_container  img{
+  max-width: 50%;
+}
+.btns .btn{
+  background: #FDDE02;
+  padding: 10px 25px;
+  color: black;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.btns .btn:hover{ 
+  background: #FDC102;
+}
+
+.interactive_3d {
+  overflow: hidden;
+}
+
+.interactive_3d > img {
+  float: left;
+}
+
+.title {
+  float: right;
+  max-width: 533px;
+}
+
+.title h1 {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.title p {
+  font-size: 23px;
+  text-align: left;
+  line-height: 140%;
+  color: #7A7A7A;
+}
+
+
+
+
+
+
