@@ -3,7 +3,7 @@
   <% @workouts_by_day.each do |w| %>
     <h3><%= w[0].strftime("%A, %b %d") %></h3>
         <% w[1].each do |workout| %>
-          <%= workout.activity %><br>
+          <%= link_to workout.activity, workout_path(workout.id) %><br>
           <% end %>
   <% end %>  
 
