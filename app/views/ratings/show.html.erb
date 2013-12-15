@@ -2,6 +2,6 @@
 
 Did <%= @rating.rated.username %> show up?
 
-<%= link_to "Yes", confirm_rating_path(@rating), :method => :post, class: "button" %>
+<%= link_to "Yes", confirm_yes_rating_path(@rating), :method => :post, class: "button" %>
 
-<%= link_to "No", '#', class: "button" %>
+<%= link_to "No", confirm_no_rating_path(@rating), :method => :post, class: "button" %>
