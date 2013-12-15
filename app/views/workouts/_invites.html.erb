@@ -1,8 +1,10 @@
-<h2>Pending Invites<h2>
-    <p>
-    <% @user.received_requests.each do |r| %>
-      <% if r.confirmed == false %>
-      <%= link_to r.workout.activity + " with " + r.sender.username, workout_invitation_url(r.workout, r) %><br>
+<% if @user.received_requests.where(:confirmed => "false").any? %>
+  <h2>Pending Invites<h2>
+      <p>
+      <% @user.received_requests.each do |r| %>
+        <% if r.confirmed == false %>
+        <%= link_to r.workout.activity + " with " + r.sender.username, workout_invitation_url(r.workout, r) %><br>
+        <% end %>
       <% end %>
-    <% end %>
-  </p>
+    </p>
+<% end %>
