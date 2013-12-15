@@ -1,7 +1,7 @@
 Fitbyfriday::Application.routes.draw do
 
   get "home/index"
-  root 'workouts#index'
+  root 'home#index'
  
   resources :user_sessions
   resources :users
