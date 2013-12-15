@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20131214220658) do
     t.integer  "workout_id"
     t.integer  "rated_id"
     t.integer  "rater_id"
-    t.boolean  "confirmed",  default: false
+    t.boolean  "confirmed", default: nil
     t.datetime "created_at"
     t.datetime "updated_at"
   end
