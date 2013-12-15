@@ -15,8 +15,7 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.find(params[:id])
     @workout = Workout.find(params[:workout_id])
     current_user.workouts << @workout
-    @invitation.confirmed = "true"
-    @invitation.save
+    @invitation.update_attribute("confirmed", true)
     redirect_to workouts_path
   end
 
