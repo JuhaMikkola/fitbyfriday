@@ -32,7 +32,11 @@ class InvitationsController < ApplicationController
   end
 
   def app_invite
-    UserMailer.app_invite(params[:email], current_user).deliver
-    redirect_to workouts_path
+    if @user = User.find_by_email(params[:email])
+      redirect_to @user
+    else
+      UserMailer.app_invite(params[:email], current_user).deliver
+      redirect_to workouts_path
+  end
   end
 end
