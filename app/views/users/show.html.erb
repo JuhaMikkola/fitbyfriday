@@ -16,50 +16,29 @@
   <%= (@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).to_s + "%" %>
 </div>
 
-<% current_user.sent_friendships.each do |z| %>
+<% if current_user != @user %>
 
-  <% if current_user != @user && z.target_id != @user.id %>
+  <% if !current_user.confirmed_friend_for?(@user) && !current_user.unconfirmed_friend_for?(@user) %>
 
     <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
 
-    <% @addfriend = 'true' %>
-  
   <% end %>
 
-<% end %>
+<% else %>
 
-<% if @addfriend == 'false' %>
-
-  <% current_user.target_friendships.each do |z| %>
-
-    <% if current_user != @user && z.sender_id != @user.id && @addfriend == 'false' %>
-
-      <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
-
-      <% @addfriend = 'true' %>
-    
-    <% end %>
-
-  <% end %>
-
-<% end %>
-
-<% if current_user != @user && @addfriend = 'false' %>
-
-  <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
-
-  <% @addfriend = 'true' %>
+This is your profile!
 
 <% end %>
 
 <h2>Friends:</h2>
 
-<ul>
   <% @user.sent_friendships.each do |i| %>
 
       <% if i.confirmed == true %>
 
-      <li><%= link_to i.target.username, user_path(i.target.id) %></li>
+      <%= link_to i.target.username, user_path(i.target.id) %>
+
+      <br>
         
       <% end %>
 
@@ -69,12 +48,15 @@
 
     <% if i.confirmed == true %>
 
-    <li><%= link_to i.sender.username, user_path(i.sender.id) %></li>
+    <%= link_to i.sender.username, user_path(i.sender.id) %>
+
+    <br>
         
     <% end %>
 
   <% end %>
-</ul>
+
+  <br>
 
 <% if current_user.id == @user.id %>
 
@@ -82,38 +64,45 @@
 
   <h3>Friends you have requested:</h3>
 
-  <ul>
+  <% if @user.sent_friendships.count == 0 %>
+
+    <p>No Requests Made</p>
+
+  <% else %>
+
     <% @user.sent_friendships.each do |i| %>
 
       <% if i.confirmed == false || i.confirmed == nil %>
 
-        <li><%= link_to i.target.username, user_path(i.target.id) %></li>
+      <%= link_to i.target.username, user_path(i.target.id) %>
 
-      <% end %>
+      <br>
 
     <% end %>
 
-  </ul>
+  <% end %>
+
+<% end %>
 
   <h3>Friends that have requested you:</h3>
 
-  <ul>
     <% @user.target_friendships.each do |i| %>
 
       <% if i.confirmed == false || i.confirmed == nil %>
 
-        <li>
+        <%= link_to i.sender.username, user_path(i.sender.id) %>
 
-          <%= link_to i.sender.username, user_path(i.sender.id) %>
+        <%= link_to 'Confirm Friendship  ', edit_friendship_path(id: i.id), class: "success tiny button" %> 
 
-          <%= link_to 'Confirm Friendship', edit_friendship_path(id: i.id), class: "success tiny button" %> 
+        <br>
 
-        </li>
+      <% else %>
+
+        <p>No Pending Requests</p>
 
       <% end %>
 
     <% end %>
-  </ul>
 
 <% end %>
 
