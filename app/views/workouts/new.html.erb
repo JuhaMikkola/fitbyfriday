@@ -1,5 +1,11 @@
-<h1>Create a new workout</h1>
+<h2>Create a new workout</h2>
 
+
+<%= form_for @workout do |w| %>
+
+
+<fieldset>
+  
 <% if @workout.errors.any? %>
   <h3>You fucked up!</h3>
   <ul>
@@ -8,8 +14,6 @@
   <% end %>
   </ul>
 <% end %>
-
-<%= form_for @workout do |w| %>
 
   <div class="field">
   <%= w.label :activity %>
@@ -32,7 +36,10 @@
   </div>
 
   <div class="action">
-  <%= w.submit %>
+  <%= w.button %>
   </div>
+
+</fieldset>
+
 
 <% end %>
