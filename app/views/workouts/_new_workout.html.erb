@@ -1,5 +1,5 @@
 <h3>New Workout</h3>
-<%= form_for @workout, remote: true do |w| %>
+<%= form_for @workout do |w| %>
 
   <div class="field">
   <%= w.label :activity %>
@@ -22,7 +22,8 @@
   </div>
 
   <div class="action">
-  <%= w.submit %>
+  <%= w.button %>
   </div>
 
+  <a class="close-reveal-modal">&#215;</a>
 <% end %>

@@ -30,4 +30,9 @@ class InvitationsController < ApplicationController
     # Send email or text to sender to notify them that
     redirect_to workouts_path
   end
+
+  def app_invite
+    UserMailer.app_invite(params[:email], current_user).deliver
+    redirect_to workouts_path
+  end
 end
