@@ -61,6 +61,7 @@ class WorkoutsController < ApplicationController
         @invite.sender_id = current_user.id
         @invite.target_id = @target.id
         @invite.save
+        UserMailer.workout_invitation(@invite).deliver
         redirect_to @workout
       end
   end

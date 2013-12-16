@@ -11,4 +11,10 @@ class UserMailer < ActionMailer::Base
 
     mail to: user.email, subject: "Sign Up Confirmation"
   end
+
+  def workout_invitation(invite)
+    @invite = invite
+
+    mail to: @invite.target.email, subject: "You've been invited to workout!"
+  end
 end
