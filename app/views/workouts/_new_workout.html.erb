@@ -1,0 +1,38 @@
+<h1>Create a new workout</h1>
+
+<% if @workout.errors.any? %>
+  <h3>You fucked up!</h3>
+  <ul>
+  <% @workout.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @workout do |w| %>
+
+  <div class="field">
+  <%= w.label :activity %>
+  <%= w.text_field :activity %><br>
+  </div>
+
+  <div class="field">
+  <%= w.label :location %>
+  <%= w.text_field :location %>
+  </div>
+
+  <div class="field">
+  <%= w.label :start_date %>
+  <%= w.date_select :start_date %>
+  </div>
+
+  <div class="field">
+  <%= w.label :start_time %>
+  <%= w.time_select :start_time, :ampm => true, :minute_step => 5 %>
+  </div>
+
+  <div class="action">
+  <%= w.submit %>
+  </div>
+
+<% end %>

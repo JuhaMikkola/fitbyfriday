@@ -1,6 +1,7 @@
 class WorkoutsController < ApplicationController
 
   def index
+    @workout = Workout.new
     if current_user
       @user = current_user
       @workouts = @user.workouts.where(start_date: Date.today..(Date.today + 7))
