@@ -4,11 +4,8 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new
     if current_user
       @user = current_user
-      @workouts = @user.workouts.where(start_date: Date.today..(Date.today + 7))
+      @workouts = @user.workouts.where(start_date: Date.today..(Date.today + 7)).sort_by(&:start_date)
       @workouts_by_day = @workouts.group_by { |w| w.start_date.to_date }
-      # @workouts = @user.workouts.group_by { |w| w.start_time.to_date.beginning_of_week }
-      # @workouts = @workouts[DateTime.now.beginning_of_week.to_date]
-      # @workouts = @workouts[DateTime.now.next_week.beginning_of_week.to_date]
       # @workouts.sort!{|t1,t2|t1.start_time <=> t2.start_time}
     end
   end
