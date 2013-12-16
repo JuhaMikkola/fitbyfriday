@@ -1,15 +1,16 @@
 
+
 <%= form_tag user_sessions_path, :method => :post do %>
-  
-  <div class="field small-6 large-centered columns">
+
+<fieldset>
+  <div class="#">
     
-    <%= label_tag :email %><br />
+    <%= label_tag :email %>
     <%= text_field_tag :email %>
   </div>
- 
 
-  <div class="field small-6 large-centered columns">
-    <%= label_tag :password %><br />
+  <div class="#">
+    <%= label_tag :password %>
     <%= password_field_tag :password %>
   </div>
 
@@ -18,5 +19,8 @@
     <%= submit_tag "Login", class: "button"%>
   </div>
 
+</fieldset>
+  
+  
 
 <% end %>

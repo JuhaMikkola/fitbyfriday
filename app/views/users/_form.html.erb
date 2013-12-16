@@ -1,4 +1,8 @@
 <%= form_for(@user) do |f| %>
+
+<fieldset>
+  
+
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -14,23 +18,23 @@
   
 
 
-   <div class="field small-6 large-centered columns">
-    <%= f.label :username %><br>
+   <div class="#">
+    <%= f.label :username %>
     <%= f.text_field :username %>
   </div>
 
-  <div class="field small-6 large-centered columns">
-    <%= f.label :email %><br>
+  <div class="#">
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
   
-  <div class="field small-6 large-centered columns">
-    <%= f.label :password %> <br>
+  <div class="#">
+    <%= f.label :password %> 
     <%= f.password_field :password %>
   </div>
 
-  <div class="field small-6 large-centered columns">
-    <%= f.label :password_confirmation %> <br>
+  <div class="#">
+    <%= f.label :password_confirmation %> 
     <%= f.password_field :password_confirmation %>
   </div>
 
@@ -38,4 +42,6 @@
   <div class="actions">
     <%= f.button %>
   </div>
+</fieldset>
+
 <% end %>

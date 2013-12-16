@@ -7,7 +7,9 @@
     <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
     <%= stylesheet_link_tag    "application" %>
+    
     <%= javascript_include_tag "vendor/modernizr" %>
+    
     <%#= javascript_include_tag "jquery.interactive_3d.js" %>
     <%= csrf_meta_tags %>
   </head>
