@@ -1,22 +1,23 @@
 
+<div class="content-primary">
+  <% if current_user %>
+  <%= link_to "New Workout", new_workout_path, class: "button" %><br>
+   
+       <%= render 'workouts' %>
 
 
-
-    <p><%# link_to (image_tag "img.png") %></p>
-    </div>
-  </div>
-
-<% if current_user %>
-<%= link_to "New Workout", new_workout_path, class: "button" %><br>
-
-  <%= render 'workouts' %>
-
-  <%= render 'invites' %>
-
-  <%= render 'rating_requests' %>
+      <%= render 'invites' %>
+    
 
 <% else %>
 
-<h2><%= link_to "Sign Up", new_user_path  %> or <%= link_to "Login", login_path %></h2>
+  <h2><%= link_to "Sign Up", new_user_path  %> or <%= link_to "Login", login_path %></h2>
 
 <% end %>
+  
+</div>
+
+
+ 
+
+
