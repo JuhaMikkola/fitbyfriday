@@ -1,10 +1,10 @@
 <h1>Workout details</h1>
 
-<ul>
-  <li><%= @workout.activity %></li>
-  <li><%= @workout.location %></li>
-  <li><%= @workout.start_time %></li>
-</ul>
+<%= @workout.activity %><br>
+<%= @workout.location %><br>
+
+<%= @workout.start_date.strftime("%A, %b %d") %><br>
+<%= @workout.start_time.strftime("%I:%M:%S %p") %><br>
 
 <h2>Who's Attending:</h2>
 <% @workout.user_workouts.each do |w| %>
@@ -25,23 +25,39 @@
     <% end %>
   <% end %>
 <% end %>
-<h3>Invite a Friend</h3>
+
   <% if @invite.present? %>
   <% if @invite.errors.any? %>
   ERROR
   <% end %>
   <% end %>
 
-<%= form_tag invite_workout_path, :method => :post do %>
-  
-  <div class="field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email %>
-  </div>
- 
-  <div class="actions">
-    <%= submit_tag "Invite Friend" %>
-  </div>
+<% if @workout.invitations.any? %> 
+
+  <% else %>
+
+  <h3>Invite a friend</h3>
+
+  <% current_user.confirmed_friendships.each do |friendship| %>
+
+    <%= form_tag invite_workout_path, :method => :post do %>
+
+      <% friend = current_user.friendship_for(friendship) %>
+
+      <%= friend.username %>
+
+      <%= friend.id %>
+
+      <%= hidden_field_tag(:user_id, friend.id) %>
+
+      <div class="actions">
+        <%= submit_tag "Invite Friend" %>
+      </div>
+
+    <% end %>
+    
+  <% end %>
+
 <% end %>
 
 <br>

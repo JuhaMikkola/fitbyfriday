@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20131215221435) do
   create_table "friendships", force: true do |t|
     t.integer  "sender_id"
     t.integer  "target_id"
-    t.boolean  "confirmed"
+    t.boolean  "confirmed", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

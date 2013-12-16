@@ -20,4 +20,35 @@ class User < ActiveRecord::Base
   has_many :sent_ratings, :class_name => "Rating", foreign_key: "rater_id"
   has_many :received_ratings, :class_name => "Rating", foreign_key: "rated_id"
 
+  def unconfirmed_friendships
+    (sent_friendships + target_friendships)
+  end
+
+  def confirmed_friendships
+    (sent_friendships + target_friendships).select {|f| f.confirmed? }
+  end
+
+  def friendship_for(friendship)
+    friendship.target == self ? friendship.sender : friendship.target
+  end
+
+  def unconfirmed_friend_for?(user)
+    self.unconfirmed_friendships.each do |friendship|
+      if friendship.target == user || friendship.sender == user
+        return true
+      end
+    end
+    return false
+  end
+
+    def confirmed_friend_for?(user)
+    self.confirmed_friendships.each do |friendship|
+      if friendship.target == user || friendship.sender == user
+        return true
+      end
+    end
+    return false
+  end
+
+
 end
