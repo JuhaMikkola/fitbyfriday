@@ -16,10 +16,14 @@ class InvitationsController < ApplicationController
     @workout = Workout.find(params[:workout_id])
     current_user.workouts << @workout
     @invitation.update_attribute("confirmed", true)
-    @rating = Rating.new(workout_id: @workout.id, rater_id: current_user.id, rated_id: @invitation.sender_id)
-    @rating.save
-    @rating2 = Rating.new(workout_id: @workout.id, rater_id: @invitation.sender_id, rated_id: current_user.id)
-    @rating2.save
+    @partners = @workout.user_workouts.select { |u| u.user_id != current_user }
+    @partners.each do |p|
+      Rating.create(workout_id: p.workout_id, rater_id: current_user.id, rated_id: p.user_id)
+      
+      Rating.create(workout_id: p.workout_id, rater_id: p.user_id, rated_id: current_user.id)
+    
+    end
+
 
     redirect_to workouts_path
   end
