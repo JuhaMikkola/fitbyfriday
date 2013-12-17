@@ -4,7 +4,7 @@ class Invitation < ActiveRecord::Base
   belongs_to :sender, class_name: "User", foreign_key: 'sender_id'
   belongs_to :target, class_name: "User", foreign_key: 'target_id'
 
-  validate :cannot_send_duplicate_invite, :invite_limit
+  validate :cannot_send_duplicate_invite
 
   def cannot_send_duplicate_invite
     if Workout.find(workout_id).invitations.any?
@@ -17,7 +17,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def invite_limit
-    if Workout.find(workout_id).user_workouts.count > 1 || Workout.find(workout_id).invitations.any?
+    if Workout.find(workout_id).user_workouts.count > 2 
       errors.add(:workout_id, "is full")
     end
   end

@@ -32,19 +32,19 @@
   <% end %>
   <% end %>
 
-<% if @workout.invitations.any? %> 
-
-  
-
-  <% else %>
 
   <h3>Invite a friend</h3>
 
+  
   <% current_user.confirmed_friendships.each do |friendship| %>
 
     <%= form_tag invite_workout_path, :method => :post do %>
 
       <% friend = current_user.friendship_for(friendship) %>
+
+
+
+        
 
       <%= friend.username %>
 
@@ -55,12 +55,13 @@
       <div class="actions">
         <%= submit_tag "Invite Friend" %>
       </div>
+      <% end %>
 
-    <% end %>
+    
     
   <% end %>
 
-<% end %>
+
 
 <br>
 
