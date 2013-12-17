@@ -17,7 +17,6 @@ end
 
 gem 'sass-rails'
 gem 'uglifier'
-gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'jquery-ui-rails'
