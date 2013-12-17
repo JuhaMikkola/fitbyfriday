@@ -18,6 +18,9 @@
           <ul class="right">
 
             <li class="divider"></li>
+            <li><%= link_to "Current User: #{current_user.username} ID = #{current_user.id}", edit_user_path(current_user.id) %></li>
+
+            <li class="divider"></li>
             <li><%= link_to "Dashboard", workouts_path %></li>
             
             <li class="divider"></li>
