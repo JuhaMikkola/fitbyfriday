@@ -35,6 +35,11 @@
   <%= w.time_select :start_time, :ampm => true, :minute_step => 5 %>
   </div>
 
+  <div class="field">
+    <%= w.label "If one of you doesn't show up then?" %>
+    <%= w.text_field :punishment %>
+  </div>
+
   <div class="action">
   <%= w.button %>
   </div>

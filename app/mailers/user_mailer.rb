@@ -11,4 +11,12 @@ class UserMailer < ActionMailer::Base
 
     mail to: user.email, subject: "Sign Up Confirmation"
   end
+
+  def punishment(workout, user)
+    @user = user
+    @workout = workout
+    
+    mail to: user.email, subject: "You Missed a Workout with #{@user.username}"
+  end
+
 end
