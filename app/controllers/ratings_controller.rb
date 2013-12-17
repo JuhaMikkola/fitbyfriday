@@ -17,6 +17,8 @@ class RatingsController < ApplicationController
     @rating.update_attribute("confirmed", true)
     @rating.confirmed = "false"
     @rating.save
+    @workout = Workout.find(@rating.workout)
+    UserMailer.punishment(@workout, @rating.rated).deliver
     redirect_to workouts_path
   end
 

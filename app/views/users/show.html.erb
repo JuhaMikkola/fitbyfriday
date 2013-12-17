@@ -17,17 +17,28 @@
 </div>
 
 <% if current_user != @user %>
-<%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
+
+  <% if !current_user.confirmed_friend_for?(@user) && !current_user.unconfirmed_friend_for?(@user) %>
+
+    <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
+
+  <% end %>
+
+<% else %>
+
+This is your profile!
+
 <% end %>
 
 <h2>Friends:</h2>
 
-<ul>
   <% @user.sent_friendships.each do |i| %>
 
       <% if i.confirmed == true %>
 
-      <li><%= link_to i.target.username, user_path(i.target.id) %></li>
+      <%= link_to i.target.username, user_path(i.target.id) %>
+
+      <br>
         
       <% end %>
 
@@ -37,12 +48,15 @@
 
     <% if i.confirmed == true %>
 
-    <li><%= link_to i.sender.username, user_path(i.sender.id) %></li>
+    <%= link_to i.sender.username, user_path(i.sender.id) %>
+
+    <br>
         
     <% end %>
 
   <% end %>
-</ul>
+
+  <br>
 
 <% if current_user.id == @user.id %>
 
@@ -50,38 +64,45 @@
 
   <h3>Friends you have requested:</h3>
 
-  <ul>
+  <% if @user.sent_friendships.count == 0 %>
+
+    <p>No Requests Made</p>
+
+  <% else %>
+
     <% @user.sent_friendships.each do |i| %>
 
       <% if i.confirmed == false || i.confirmed == nil %>
 
-        <li><%= link_to i.target.username, user_path(i.target.id) %></li>
+      <%= link_to i.target.username, user_path(i.target.id) %>
 
-      <% end %>
+      <br>
 
     <% end %>
 
-  </ul>
+  <% end %>
+
+<% end %>
 
   <h3>Friends that have requested you:</h3>
 
-  <ul>
     <% @user.target_friendships.each do |i| %>
 
       <% if i.confirmed == false || i.confirmed == nil %>
 
-        <li>
+        <%= link_to i.sender.username, user_path(i.sender.id) %>
 
-          <%= link_to i.sender.username, user_path(i.sender.id) %>
+        <%= link_to 'Confirm Friendship  ', edit_friendship_path(id: i.id), class: "success tiny button" %> 
 
-          <%= link_to 'Confirm Friendship', edit_friendship_path(id: i.id), class: "success tiny button" %> 
+        <br>
 
-        </li>
+      <% else %>
+
+        <p>No Pending Requests</p>
 
       <% end %>
 
     <% end %>
-  </ul>
 
 <% end %>
 

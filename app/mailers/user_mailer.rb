@@ -17,4 +17,12 @@ class UserMailer < ActionMailer::Base
 
     mail to: @invite.target.email, subject: "You've been invited to workout!"
   end
+
+  def punishment(workout, user)
+    @user = user
+    @workout = workout
+    
+    mail to: user.email, subject: "You Missed a Workout with #{@user.username}"
+  end
+
 end

@@ -1,5 +1,11 @@
-<h1>Create a new workout</h1>
+<h2>Create a new workout</h2>
 
+
+<%= form_for @workout do |w| %>
+
+
+<fieldset>
+  
 <% if @workout.errors.any? %>
   <h3>You fucked up!</h3>
   <ul>
@@ -8,8 +14,6 @@
   <% end %>
   </ul>
 <% end %>
-
-<%= form_for @workout do |w| %>
 
   <div class="field">
   <%= w.label :activity %>
@@ -31,8 +35,16 @@
   <%= w.time_select :start_time, :ampm => true, :minute_step => 5 %>
   </div>
 
-  <div class="action">
-  <%= w.submit %>
+  <div class="field">
+    <%= w.label "If one of you doesn't show up then?" %>
+    <%= w.text_field :punishment %>
   </div>
+
+  <div class="action">
+  <%= w.button %>
+  </div>
+
+</fieldset>
+
 
 <% end %>
