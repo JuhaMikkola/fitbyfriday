@@ -1,13 +1,11 @@
-<h3>Pending Friend Requests</h3>
+<% if current_user.target_friendships.where(:confirmed => nil).any? %>
 
-<% current_user.target_friendships.each do |i| %>
+  <h3>Pending Friend Requests</h3>
 
-  <% if i.confirmed == false || i.confirmed == nil %>
-
-    <%= link_to i.sender.username, user_path(i.sender.id) %>
-
-    <%= link_to 'Confirm Friendship  ', edit_friendship_path(id: i.id), class: "success tiny button" %> 
-
+  <% current_user.target_friendships.each do |i| %>
+    <% if i.confirmed == false || i.confirmed == nil %>
+      <%= link_to i.sender.username, user_path(i.sender.id) %>
+      <%= link_to 'Confirm Friendship  ', edit_friendship_path(id: i.id), class: "success tiny button" %> 
+    <% end %>
   <% end %>
-
 <% end %>
