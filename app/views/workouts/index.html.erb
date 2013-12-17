@@ -3,7 +3,7 @@
 
   <% if current_user %>
 
-    <%= link_to "New Workout", new_workout_path, class: "button" %><br>
+
    
       <%= render 'workouts' %>
 
@@ -14,6 +14,9 @@
 
 
       <%= render 'friends' %>
+
+      
+    <%= link_to "New Workout", new_workout_path, class: "button" %>
 
   <% else %>
 
