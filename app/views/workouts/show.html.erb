@@ -1,6 +1,5 @@
 <h1>Workout details</h1>
 
-
 <%= @workout.activity %><br>
 <%= @workout.location %><br>
 
@@ -37,7 +36,7 @@
 
   <h3>Invite a friend</h3>
 
-  
+
   <% current_user.confirmed_friendships.each do |friendship| %>
 
     <%= form_tag invite_workout_path, :method => :post do %>
@@ -46,7 +45,7 @@
 
 
 
-        
+
 
       <%= friend.username %>
 
@@ -59,8 +58,8 @@
       </div>
       <% end %>
 
-    
-    
+
+
   <% end %>
 
 
