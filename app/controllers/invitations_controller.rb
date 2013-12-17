@@ -37,6 +37,6 @@ class InvitationsController < ApplicationController
     else
       UserMailer.app_invite(params[:email], current_user).deliver
       redirect_to workouts_path
-  end
+    end
   end
 end

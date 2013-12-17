@@ -1,4 +1,6 @@
-<% if @user.sent_ratings.where(:confirmed => nil).any? %>
+<% if false %>
+<% if @user.sent_ratings.joins(:workout).where("confirmed = ? and workouts.start_date > ?", nil, Date.today.to_date).any? %>
+<% end 
   <h3>Confirm these workouts:</h3>
   <% @user.sent_ratings.where(:confirmed => nil).each do |rating| %>
     <%= link_to rating.workout.activity, rating_path(rating.id) %> with <%= rating.rated.username %><br>

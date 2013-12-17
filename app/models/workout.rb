@@ -9,7 +9,7 @@ class Workout < ActiveRecord::Base
 
   has_many :ratings
 
-  validate :start_time_cannot_be_in_the_past
+  # validate :start_time_cannot_be_in_the_past
 
   def start_time_cannot_be_in_the_past
     if start_date.present? && start_date.to_date < Date.today
