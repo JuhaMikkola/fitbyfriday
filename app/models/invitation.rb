@@ -22,4 +22,9 @@ class Invitation < ActiveRecord::Base
     end
   end
 
+  def cannot_invite_self
+    if current_user = self.target
+      errors.add(:target_id, "can't invite yourself")
+    end
+  end
 end

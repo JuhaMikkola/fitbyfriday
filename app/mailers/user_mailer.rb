@@ -25,4 +25,9 @@ class UserMailer < ActionMailer::Base
     mail to: user.email, subject: "You Missed a Workout with #{@user.username}"
   end
 
+  def app_invite(email, user)  
+    @user = user
+
+    mail to: email, subject: "#{@user.username} has invited you to join FitByFriday!"
+  end
 end

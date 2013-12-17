@@ -12,13 +12,23 @@
   <%= render 'new_workout' %>
   </div>
 
+  <div class="row">
+  <div class="small-12 columns">
+    <h3>Invite a friend to join Fit By Friday</h3>
+    <%= form_tag('app_invite', method: "post") do %>
+    <%= email_field_tag(:email) %>
+    <%= hidden_field_tag(current_user) %>
+    <%= button_tag("Invite") %>
+    <% end %>
+  </div>
+</div>
+
 <% else %>
 
   <h2><%= link_to "Sign Up", new_user_path  %> or <%= link_to "Login", login_path %></h2>
 
 <% end %>
 
+<br><br>
 
 
-
-  
