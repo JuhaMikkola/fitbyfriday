@@ -19,6 +19,9 @@
   <%= (@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).to_s + "%" %>
 </div>
 
+<canvas id="myChart" width="200" height="200"></canvas>
+
+
 <% if current_user == @user %>
   This is your profile!
 <% else %>
