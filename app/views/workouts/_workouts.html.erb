@@ -1,27 +1,26 @@
 
 <% if @user.workouts.any? %>
-<hr>
-  <ul>
+
+<div class="workout-week">
+    <h2><b>This weeks workouts</b></h2>
+
     <% @workouts_by_day.each do |w| %>
 
-          <%= w[0].strftime("%A, %b %d") %>  
-      
-          <% w[1].each do |workout| %>  
-          
-           <h3> <%= link_to workout.activity, workout_path(workout.id) %> </h3>
-                            
-          <% end %>
-      <hr>
-    <% end %>  
+      <div class="workout-day" id="">
+        <time datetime="<%= w[0] %>"><%= w[0].strftime("%A, %b %d") %></time>
+
+        <% w[1].each do |workout| %>
+          <h3 data-time="<%= workout.start_time.strftime("%H:%M:%S") %>"> <%= link_to workout.activity, workout_path(workout.id) %> </h3>
+        <% end %>
+      </div>
+    <% end %>
 
   <% else %>
     <h3>No Workouts Scheduled</h3>
 
-
-  </ul>
-  <% end %>  
+  <% end %>
 
 
 
 
-
+</div>

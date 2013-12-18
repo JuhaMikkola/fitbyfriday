@@ -10,20 +10,21 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friendship_params)
     @friendship.sender_id = current_user.id
-    if @friendship.save 
+    if @friendship.save
       redirect_to users_path
     else
-      render 'new'  
+      render 'new'
     end
   end
 
-  def edit
+  def confirm
     @friendship = Friendship.find(params[:id])
-    @friendship.confirmed = true
-    if @friendship.save 
+    @confirmed_friendship = Friendship.new(sender: current_user, target: @friendship.sender, confirmed: true)
+
+    if @confirmed_friendship.save && @friendship.update_attribute(:confirmed, true)
       redirect_to users_path
     else
-      render 'index'  
+      render 'index'
     end
   end
 
@@ -31,5 +32,5 @@ class FriendshipsController < ApplicationController
   def friendship_params
     params.require(:friendship).permit(:target_id, :id)
   end
-  
+
 end

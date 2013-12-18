@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
         # send email
         UserMailer.signup_confirmation(@user).deliver
-
+        auto_login(@user)
         format.html { redirect_to @user, notice: "Welcome #{@user.username}" }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -75,6 +75,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation, :avatar)
     end
 end

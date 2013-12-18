@@ -1,6 +1,5 @@
 <h1>Workout details</h1>
 
-
 <%= @workout.activity %><br>
 <%= @workout.location %><br>
 
@@ -8,10 +7,12 @@
 <%= @workout.start_time.strftime("%I:%M:%S %p") %><br>
 
 
-<h2>Who's Attending:</h2>
-<% @workout.user_workouts.each do |w| %>
-  <%= User.find(w.user_id).username %><br>
-<% end %>
+<div id="attending">
+  <h2>Who's Attending:</h2>
+  <% @workout.user_workouts.each do |w| %>
+    <%= User.find(w.user_id).username %><br>
+  <% end %>
+</div>
 
 <h2>Awaiting Confirmation</h2>
 <% if @workout.creator == current_user %>
@@ -35,32 +36,34 @@
   <% end %>
 
 
-  <h3>Invite a friend</h3>
+  <h3>Invite a friend in your group</h3>
 
-  
-  <% current_user.confirmed_friendships.each do |friendship| %>
+  <% current_user.friends.each do |friend| %>
 
     <%= form_tag invite_workout_path, :method => :post do %>
-
-      <% friend = current_user.friendship_for(friendship) %>
-
-
-
-        
-
       <%= friend.username %>
-
       <%= hidden_field_tag(:user_id, friend.id) %>
-
       <div class="actions">
         <%= submit_tag "Invite Friend" %>
       </div>
-      <% end %>
-
-    
-    
+    <% end %>
   <% end %>
 
+ <br>
+ <br>
+  or
+
+
+  <div class="row">
+  <div class="small-12 columns">
+    <h3>Invite a friend to join Fit By Friday</h3>
+    <%= form_tag('app_invite', method: "post") do %>
+    <%= email_field_tag(:email) %>
+    <%= hidden_field_tag(current_user) %>
+    <%= button_tag("Invite") %>
+    <% end %>
+  </div>
+</div>
 
 
 <br>

@@ -1,11 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Profile:</h2>
+<h2>Profile Page:</h2>
 
-<p>
-  <strong>Username:</strong>
+
+<% provide(:title, @user.username) %>
+<h1>
+  <%= gravatar_for @user %> <br>
   <%= @user.username %>
-</p>
+</h1>
+
 <p>
   <strong>Email:</strong>
   <%= link_to "#{@user.email}", "mailto:#{@user.email}" %>
@@ -16,95 +19,41 @@
   <%= (@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).to_s + "%" %>
 </div>
 
-<% if current_user != @user %>
-
-  <% if !current_user.confirmed_friend_for?(@user) && !current_user.unconfirmed_friend_for?(@user) %>
-
-    <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
-
-  <% end %>
-
+<% if current_user == @user %>
+  This is your profile!
 <% else %>
-
-This is your profile!
-
+  <% if !@user.friends.where(current_user) %>
+    <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
+  <% else %>
+      Already Friends
+  <% end %>
 <% end %>
 
 <h2>Friends:</h2>
 
-  <% @user.sent_friendships.each do |i| %>
-
-      <% if i.confirmed == true %>
-
-      <%= link_to i.target.username, user_path(i.target.id) %>
-
-      <br>
-        
-      <% end %>
-
-  <% end %>
-
-  <% @user.target_friendships.each do |i| %>
-
-    <% if i.confirmed == true %>
-
-    <%= link_to i.sender.username, user_path(i.sender.id) %>
-
-    <br>
-        
-    <% end %>
-
+  <% @user.friends.each do |friend| %>
+      <%= link_to friend.username, user_path(friend) %><br>
   <% end %>
 
   <br>
 
-<% if current_user.id == @user.id %>
-
-  <h2>Pending Friends:</h2>
-
-  <h3>Friends you have requested:</h3>
-
-  <% if @user.sent_friendships.count == 0 %>
-
-    <p>No Requests Made</p>
-
-  <% else %>
-
-    <% @user.sent_friendships.each do |i| %>
-
-      <% if i.confirmed == false || i.confirmed == nil %>
-
-      <%= link_to i.target.username, user_path(i.target.id) %>
-
-      <br>
-
+<% if current_user == @user %>
+  <% if @user.pending_friendships.any? %>
+    <h2>Pending Friends:</h2>
+    <% @user.pending_friendships.each do |friendship| %>
+      <%= friendship.target.username %>
     <% end %>
-
   <% end %>
-
 <% end %>
 
+<% if @user.requested_friendships.any? %>
   <h3>Friends that have requested you:</h3>
-
-    <% @user.target_friendships.each do |i| %>
-
-      <% if i.confirmed == false || i.confirmed == nil %>
-
-        <%= link_to i.sender.username, user_path(i.sender.id) %>
-
-        <%= link_to 'Confirm Friendship  ', edit_friendship_path(id: i.id), class: "success tiny button" %> 
-
-        <br>
-
-      <% else %>
-
-        <p>No Pending Requests</p>
-
-      <% end %>
-
+    <% @user.requested_friendships.each do |friendship| %>
+      <%= link_to friendship.sender.username, user_path(friendship.sender) %>
+      <%= link_to 'Confirm Friendship  ', edit_friendship_path(friendship.sender), class: "success tiny button" %>
     <% end %>
-
 <% end %>
 
-<%= link_to 'Edit', edit_user_path(@user), class: "tiny button" %> 
+
+<%= link_to 'Edit', edit_user_path(@user), class: "tiny button" %>
 <%= link_to 'Back', users_path, class: "tiny button" %>

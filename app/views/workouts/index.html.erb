@@ -1,28 +1,23 @@
 
-<div class="content-primary">
-
-
 <% if current_user %>
-  <a href="#" data-reveal-id="new_workout" class="button">New Workout</a>
-  <%= render 'workouts' %>
-  <%= render 'invites' %>
-  <%= render 'rating_requests' %>
-  <%= render 'friends' %>
 
-  <div id="new_workout" class="reveal-modal" data-reveal>
-  <%= render 'new_workout' %>
+  <div class="notification">
+    <h3><b>Notifications</b></h3>
+      <%= render 'rating_requests' %>
+      <%= render 'invites' %>
+      <%= render 'friends' %>
   </div>
 
-  <div class="row">
-  <div class="small-12 columns">
-    <h3>Invite a friend to join Fit By Friday</h3>
-    <%= form_tag('app_invite', method: "post") do %>
-    <%= email_field_tag(:email) %>
-    <%= hidden_field_tag(current_user) %>
-    <%= button_tag("Invite") %>
-    <% end %>
+  <div id="workout-container">
+    <%= render 'workouts' %>
   </div>
-</div>
+
+
+  <div id="new-workout-container" class="reveal-modal" data-reveal>
+    <%= render 'new_workout' %>
+  </div>
+
+  <a href="#" data-reveal-id="new-workout-container" class="button">New Workout</a>
 
 <% else %>
 

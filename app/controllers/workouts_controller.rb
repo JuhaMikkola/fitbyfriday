@@ -20,11 +20,30 @@ class WorkoutsController < ApplicationController
   end
 
   def create
+    # @workout = current_user.workouts.build(workout_params)
+
     @workout = Workout.new(workout_params)
     @workout.creator = current_user
+
     if @workout.save
       current_user.workouts << @workout
-      redirect_to workouts_path
+
+      # This is the normal way to do it for non-HTML responses
+
+      # respond_to do |format|
+      #   format.html {}
+      #   format.json {}
+      # end
+
+      if request.xhr?
+        @user = current_user
+        @workouts = current_user.workouts.where(start_date: Date.today..(Date.today + 7)).sort_by(&:start_date)
+        @workouts_by_day = @workouts.group_by { |w| w.start_date.to_date }
+
+        render :partial => 'workouts'
+      else
+        redirect_to workouts_path
+      end
     else
       render 'new'
     end
