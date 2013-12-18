@@ -2,12 +2,13 @@
 
 <h2>Profile Page:</h2>
 
-<%= image_tag avatar_url(@user) %>
 
-<p>
-  <strong>Username:</strong>
+<% provide(:title, @user.username) %>
+<h1>
+  <%= gravatar_for @user %> <br>
   <%= @user.username %>
-</p>
+</h1>
+
 <p>
   <strong>Email:</strong>
   <%= link_to "#{@user.email}", "mailto:#{@user.email}" %>
