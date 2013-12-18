@@ -38,10 +38,9 @@
   <h3>Invite a friend</h3>
 
 
-  <% current_user.confirmed_friendships.each do |friendship| %>
+  <% current_user.friends.each do |friend| %>
 
     <%= form_tag invite_workout_path, :method => :post do %>
-      <% friend = current_user.friendship_for(friendship) %>
       <%= friend.username %>
       <%= hidden_field_tag(:user_id, friend.id) %>
       <div class="actions">

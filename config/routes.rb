@@ -2,7 +2,7 @@ Fitbyfriday::Application.routes.draw do
 
   get "home/index"
   root 'home#index'
- 
+
   resources :user_sessions
   resources :users
   #resources :inivitations
@@ -15,7 +15,10 @@ Fitbyfriday::Application.routes.draw do
     end
   end
 
-  resources :friendships
+  resources :friendships do
+    post 'confirm', on: :member
+  end
+
 
   resources :ratings do
     post 'confirm_yes', on: :member
@@ -25,7 +28,7 @@ Fitbyfriday::Application.routes.draw do
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
   post 'app_invite' => 'invitations#app_invite', :as => :app_invite
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
