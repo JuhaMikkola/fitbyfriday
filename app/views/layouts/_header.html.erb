@@ -17,8 +17,10 @@
         <!-- Right Nav Section -->
           <ul class="right">
 
-            <li class="divider"></li>
-            <li><%# link_to "Current User: #{current_user.username} ID = #{current_user.id}", edit_user_path(current_user.id) %></li>
+            <% if current_user %>
+              <li class="divider"></li>
+              <li><%= link_to "Current User: #{current_user.username} ID = #{current_user.id}", edit_user_path(current_user.id) %></li>
+            <% end %>
 
             <li class="divider"></li>
             <li><%= link_to "Dashboard", workouts_path %></li>

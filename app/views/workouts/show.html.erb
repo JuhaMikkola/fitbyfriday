@@ -7,10 +7,12 @@
 <%= @workout.start_time.strftime("%I:%M:%S %p") %><br>
 
 
-<h2>Who's Attending:</h2>
-<% @workout.user_workouts.each do |w| %>
-  <%= User.find(w.user_id).username %><br>
-<% end %>
+<div id="attending">
+  <h2>Who's Attending:</h2>
+  <% @workout.user_workouts.each do |w| %>
+    <%= User.find(w.user_id).username %><br>
+  <% end %>
+</div>
 
 <h2>Awaiting Confirmation</h2>
 <% if @workout.creator == current_user %>
@@ -42,11 +44,10 @@
       <% friend = current_user.friendship_for(friendship) %>
       <%= friend.username %>
       <%= hidden_field_tag(:user_id, friend.id) %>
-
       <div class="actions">
         <%= submit_tag "Invite Friend" %>
       </div>
-      <% end %>
+    <% end %>
   <% end %>
 
  <br>
