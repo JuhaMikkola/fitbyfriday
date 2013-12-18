@@ -4,8 +4,8 @@
 
   <% current_user.target_friendships.each do |i| %>
     <% if i.confirmed == false || i.confirmed == nil %>
-      <%= link_to i.sender.username, user_path(i.sender.id) %>
-      <%= link_to 'Confirm Friendship  ', edit_friendship_path(id: i.id), class: "success tiny button" %>
+      Friend Request from  <%= link_to i.sender.username , user_path(i.sender.id) %>
+      <%= link_to 'Accept  ', edit_friendship_path(id: i.id), class: " tiny button" %>
     <% end %>
   <% end %>
 <% end %>
