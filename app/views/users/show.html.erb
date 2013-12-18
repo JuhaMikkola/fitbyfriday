@@ -54,6 +54,9 @@
     <% end %>
 <% end %>
 
-
-<%= link_to 'Edit', edit_user_path(@user), class: "tiny button" %>
+<%= link_to 'Edit', edit_user_path(@user), {class: "tiny button", :'data-reveal-id' => "edit-user-container"} %>
 <%= link_to 'Back', users_path, class: "tiny button" %>
+
+<div id="edit-user-container" class="reveal-modal" data-reveal>
+  <%= render 'form' %>
+</div>
