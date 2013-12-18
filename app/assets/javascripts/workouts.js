@@ -18,9 +18,24 @@
         }
       });
     });
+    $('.friend-invite-form').on('submit', function(event) {
+      event.preventDefault();
 
+      var self = $(this);
+      var url = $(this).attr("action");
 
-
+      $.ajax({
+        url: url,
+        method: "POST",
+        data: self.serialize(),
+        dataType: "json",
+        success: function(data) {
+          alert("Success!");
+          self.remove();
+          $("#attending").append(data.name + "<br>")
+        }
+      });
+    });
   });
 })(jQuery);
 
