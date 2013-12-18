@@ -1,11 +1,7 @@
-<% if current_user.target_friendships.where(:confirmed => nil).any? %>
+<% if current_user.requested_friendships.any? %>
 
-
-
-  <% current_user.target_friendships.each do |i| %>
-    <% if i.confirmed == false || i.confirmed == nil %>
-      Friend Request from  <%= link_to i.sender.username , user_path(i.sender.id) %>
-      <%= link_to 'Accept  ', edit_friendship_path(id: i.id), class: " tiny button" %>
-    <% end %>
+  <% current_user.requested_friendships.each do |request| %>
+      <%= link_to request.sender.username, user_path(request.sender) %>
+      <%= link_to 'Confirm Friendship  ', confirm_friendship_path(request), method: :post, class: "success tiny button" %>
   <% end %>
 <% end %>
