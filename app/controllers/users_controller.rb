@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
         # send email
         UserMailer.signup_confirmation(@user).deliver
-
+        auto_login(@user)
         format.html { redirect_to @user, notice: "Welcome #{@user.username}" }
         format.json { render action: 'show', status: :created, location: @user }
       else
