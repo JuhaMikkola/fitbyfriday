@@ -2,7 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.workout-day {
-  border-bottom: 1px solid #444;
+div.workout-day {
+  border-bottom: 1px solid #eee;
   padding: 1em;
+}
+
+
+div.workout-week {
+   border-top: 1px solid #eee;
+  padding: 1em;
+}
+
+
+div.notification {
+  background-color: #f2f2f2;
 }

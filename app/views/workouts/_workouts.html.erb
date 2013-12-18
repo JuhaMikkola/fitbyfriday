@@ -1,8 +1,12 @@
 
 <% if @user.workouts.any? %>
+
+<div class="workout-week">
+    <h2><b>This weeks workouts</b></h2>
+
     <% @workouts_by_day.each do |w| %>
 
-      <div class="workout-day">
+      <div class="workout-day" id="">
         <time datetime="<%= w[0] %>"><%= w[0].strftime("%A, %b %d") %></time>
 
         <% w[1].each do |workout| %>
@@ -19,4 +23,4 @@
 
 
 
-
+</div>
