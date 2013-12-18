@@ -2,7 +2,7 @@
 
 <% if @user.sent_ratings.where(:confirmed => nil).any? %>
   <% @user.sent_ratings.where(:confirmed => nil).each do |rating| %>
-    <%= link_to "Was " + rating.rated.username + " at " + rating.workout.activity + " ?" , rating_path(rating.id) %> <br>
+   <h4><%= link_to "Was " + rating.rated.username + " at " + rating.workout.activity + " ?" , rating_path(rating.id) %> </h4>
   <% end %>
 
   <% if false %>
