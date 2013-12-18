@@ -22,7 +22,7 @@
 <% if current_user == @user %>
   This is your profile!
 <% else %>
-  <% if !@user.friends.where(current_user) %>
+  <% if @user.friends.where(current_user) %>
     <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
   <% else %>
       Already Friends
@@ -41,7 +41,7 @@
   <% if @user.pending_friendships.any? %>
     <h2>Pending Friends:</h2>
     <% @user.pending_friendships.each do |friendship| %>
-      <%= friendship.target.username %>
+      <%= friendship.target.username %><br>
     <% end %>
   <% end %>
 <% end %>

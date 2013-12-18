@@ -40,7 +40,7 @@
 
   <% current_user.friends.each do |friend| %>
 
-    <%= form_tag invite_workout_path, :method => :post do %>
+    <%= form_tag invite_workout_path, :method => :post, :class => "friend-invite-form" do %>
       <%= friend.username %>
       <%= hidden_field_tag(:user_id, friend.id) %>
       <div class="actions">
@@ -57,7 +57,7 @@
   <div class="row">
   <div class="small-12 columns">
     <h3>Invite a friend to join Fit By Friday</h3>
-    <%= form_tag('app_invite', method: "post") do %>
+    <%= form_tag('app_invite_path', method: "post") do %>
     <%= email_field_tag(:email) %>
     <%= hidden_field_tag(current_user) %>
     <%= button_tag("Invite") %>

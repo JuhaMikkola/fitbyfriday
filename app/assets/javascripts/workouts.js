@@ -30,7 +30,6 @@
         data: self.serialize(),
         dataType: "json",
         success: function(data) {
-          alert("Success!");
           self.remove();
           $("#attending").append(data.name + "<br>")
         }

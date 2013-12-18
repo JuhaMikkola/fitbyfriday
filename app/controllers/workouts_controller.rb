@@ -91,7 +91,7 @@ class WorkoutsController < ApplicationController
       respond_to do |format|
         if @invite.save
           format.html { redirect_to @workout }
-          format.json { render :json => { name: "snoopy" }}
+          format.json { render :json => { name: user.username }}
         else
           format.html { redirect_to 'index' }
 
