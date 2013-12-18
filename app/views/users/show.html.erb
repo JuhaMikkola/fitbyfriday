@@ -16,18 +16,10 @@
   <%= (@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).to_s + "%" %>
 </div>
 
-<% if current_user != @user %>
-
-  <% if !current_user.confirmed_friend_for?(@user) && !current_user.unconfirmed_friend_for?(@user) %>
-
-    <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
-
-  <% end %>
-
+<% if current_user == @user %>
+  This is your profile!
 <% else %>
-
-This is your profile!
-
+  <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
 <% end %>
 
 <h2>Friends:</h2>
@@ -39,7 +31,7 @@ This is your profile!
       <%= link_to i.target.username, user_path(i.target.id) %>
 
       <br>
-        
+
       <% end %>
 
   <% end %>
@@ -51,14 +43,14 @@ This is your profile!
     <%= link_to i.sender.username, user_path(i.sender.id) %>
 
     <br>
-        
+
     <% end %>
 
   <% end %>
 
   <br>
 
-<% if current_user.id == @user.id %>
+<% if current_user == @user %>
 
   <h2>Pending Friends:</h2>
 
@@ -92,7 +84,7 @@ This is your profile!
 
         <%= link_to i.sender.username, user_path(i.sender.id) %>
 
-        <%= link_to 'Confirm Friendship  ', edit_friendship_path(id: i.id), class: "success tiny button" %> 
+        <%= link_to 'Confirm Friendship  ', edit_friendship_path(id: i.id), class: "success tiny button" %>
 
         <br>
 
@@ -106,5 +98,5 @@ This is your profile!
 
 <% end %>
 
-<%= link_to 'Edit', edit_user_path(@user), class: "tiny button" %> 
+<%= link_to 'Edit', edit_user_path(@user), class: "tiny button" %>
 <%= link_to 'Back', users_path, class: "tiny button" %>
