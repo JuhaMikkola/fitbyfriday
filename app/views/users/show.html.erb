@@ -21,7 +21,11 @@
 <% if current_user == @user %>
   This is your profile!
 <% else %>
-  <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
+  <% if !current_user.confirmed_friend_for?(@user) && !current_user.unconfirmed_friend_for?(@user) %>
+    <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
+  <% else %>
+      Already Friends
+  <% end %>
 <% end %>
 
 <h2>Friends:</h2>
