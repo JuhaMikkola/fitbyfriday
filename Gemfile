@@ -22,6 +22,7 @@ gem 'jquery-rails'
 gem 'jbuilder'
 gem 'jquery-ui-rails'
 
+gem 'whenever', :require => false
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
