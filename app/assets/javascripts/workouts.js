@@ -35,9 +35,23 @@
         }
       });
     });
-    $('.rating').on('click', function(event) {
+
+    $('.confirm-rating').on('click', function(event) {
       event.preventDefault();
-      $(this).slideUp();
+
+      var self = $(this);
+      var url = $(this).attr("href");
+      var rating_confirmation = $(this).data('rating-confirmation');
+
+      $.ajax({
+        url: url,
+        method: "POST",
+        data: { rating_confirmation: rating_confirmation },
+        dataType: "json",
+        success: function() {
+          self.closest('.rating').slideUp();
+        }
+      });
     });
   });
 })(jQuery);
