@@ -1,28 +1,29 @@
-<h1>Listing users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Email</th> 
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.username %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user, class: "tiny button" %></td>
-        <td><%= link_to 'Edit', edit_user_path(user), class: "tiny button"  %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, class: "tiny button", data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h1>Listing Users</h1>
 
 
-<%= link_to 'New User', new_user_path, class: "button" %>
+<% @users.each do |user| %>
+  <div class="workout-week">
+    <%= link_to gravatar_for(user), user_path(user.id) %> <br>
+    Username: <%= user.username %> <br>
+    Email: <%= user.email %> <br>
+    <br>
+
+    <%= link_to 'Edit', edit_user_path(user), class: "tiny button"  %>
+    <%=  %>
+    <%= link_to 'Destroy', user, method: :delete, class: "tiny button", data: { confirm: 'Are you sure?' } %>
+
+  </div>
+  <% end %>
+
+  <div class="workout-week">
+
+
+
+   <%#= link_to 'New User', new_user_path, class: "button" %>
+  </div>
+
+   <div id="new-user-container" class="reveal-modal" data-reveal>
+      <%= render 'form' %>
+    </div>
+
+    <a href="#" data-reveal-id="new-user-container" class="button"> New User</a>

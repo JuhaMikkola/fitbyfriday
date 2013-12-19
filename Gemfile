@@ -7,6 +7,8 @@ gem 'rails', '4.0.1'
 gem 'pg'
 gem 'sorcery'
 gem 'foundation-rails'
+gem 'chart-js-rails'
+gem 'foundation-icons-sass-rails'
 
 group :development, :test do
 

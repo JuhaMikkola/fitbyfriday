@@ -1,10 +1,19 @@
-<div >
-
 <% if @user.sent_ratings.where(:confirmed => nil).any? %>
-  <% @user.sent_ratings.where(:confirmed => nil).each do |rating| %>
-   <h4><%= link_to "Was " + rating.rated.username + " at " + rating.workout.activity + " ?" , rating_path(rating.id) %> </h4>
-  <% end %>
-
+  <div class="rating-requests">
+    <% @user.sent_ratings.where(:confirmed => nil).each do |rating| %>
+    <div class="rating">
+      <div class="row">
+        <div class="small-8 columns">
+          <h4><%= link_to "Was " + rating.rated.username + " at " + rating.workout.activity + "?" , rating_path(rating.id) %> </h4>
+        </div>
+        <div class="small-4 columns confirm-buttons">
+          <%= link_to '<i class="fi-check"></i>'.html_safe, confirm_rating_path(rating), data: {rating_confirmation: true}, class: "confirm-rating" %>
+          <%= link_to '<i class="fi-x"></i>'.html_safe, confirm_rating_path(rating), data: {rating_confirmation: false}, class: "confirm-rating" %>
+        </div>
+    </div>
+  </div>
+    <% end %>
+  </div>
   <% if false %>
     <% if @user.sent_ratings.joins(:workout).where("confirmed = ? and workouts.start_date > ?", nil, Date.today.to_date).any? %>
     <% end %>

@@ -1,28 +1,32 @@
-
-
-<div class="main">
-  <div class="page_container">
-    <div id="3d" class="interactive_3d">
-       <%= image_tag 'frame_1.png' %>
-      <div class="title small-8 large-left columns">
-        <h1>Fit By Friday<small>Schedule a Workout with a friend</small></h1>
-        <p>Never miss a workout again.</p>
-        <div class="header">
-          <div class="menu">
-            <!-- <a href="index.html">Demo 1</a> -->
-            <h3><a href="#" data-reveal-id="new-user-container" class="button">New User</a> or <%= link_to "Login", login_path %></h3>
-          </div>
+<section class="header-11-sub bg-midnight-blue">
+  <div class="background">&nbsp;</div>
+  <div class="container">
+    <div class="row">
+      <div class="large4">
+        <h3>Join Fit By Friday</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, sit, praesentium sint voluptatum maxime asperiores.</p>
+        <div class="signup">
+          <h3><a href="#" data-reveal-id="new-user-container" class="button">New User</a> or <%= link_to "Login", login_path %></h3>
         </div>
-        <!-- <p class="direction"><i class="customicon-move"></i> Please move me!</p> -->
       </div>
     </div>
   </div>
 
+
   <div id="new-user-container" class="reveal-modal" data-reveal>
-
     <%= render 'users/form' %>
-
   </div>
 
-</div>
+</section>
+
+<!-- logos -->
+    <section class="logos large12">
+      <div class="container large-12">
+        <div><%= image_tag "guardian.png" %></div>
+        <div><%= image_tag "forbes.png" %></div>
+        <div><%= image_tag "ny-times.png" %></div>
+        <div><%= image_tag "mashable.png" %></div>
+        <div><%= image_tag "red-bull.png" %></div>
+      </div>
+    </section>
 

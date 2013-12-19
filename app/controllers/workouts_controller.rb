@@ -88,10 +88,15 @@ class WorkoutsController < ApplicationController
       @invite = @workout.invitations.build
       @invite.sender  = current_user
       @invite.target  = user
-      @invite.save
-      redirect_to @workout
-    else
-      redirect_to 'index'
+      respond_to do |format|
+        if @invite.save
+          format.html { redirect_to @workout }
+          format.json { render :json => { name: user.username }}
+        else
+          format.html { redirect_to 'index' }
+
+        end
+      end
     end
   end
 

@@ -14,18 +14,43 @@
   <%= link_to "#{@user.email}", "mailto:#{@user.email}" %>
 </p>
 
-<div class="panel">
+<div class="panel" id="accountability-score" data-total="<%= @user.received_ratings.count.to_f * 100 %>" data-confirmed="<%= @user.received_ratings.where(:confirmed => true).count.to_f %>">
   Accountability Score <br>
   <%= (@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).to_s + "%" %>
 </div>
 
+<canvas id="myChart" width="200" height="200"></canvas>
+
+<br>
+
+
 <% if current_user == @user %>
-  This is your profile!
+  <p>This is your profile!</p>
+
+  <!-- Add Friend Model -->
 <% else %>
-  <% if !@user.friends.where(current_user) %>
-    <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
-  <% else %>
-      Already Friends
+
+  <% if @user.friends.where(current_user) %>
+
+    <div id="new-friend-container" class="reveal-modal" data-reveal>
+      <h2><%= current_user.username %>, are you sure you want to add <%= @friendship.target.username %> as a friend?</h2>
+
+        <div>
+        <%= form_for @friendship do |f| %>
+          <%= f.hidden_field(:target_id) %>
+          <%= f.submit "Make Us Friends", class: "button" %>
+        <% end %>
+        </div>
+    </div>
+
+    <% unless current_user.friends.include?(@user) || current_user.pending_friendships.where(target_id: @user).present? %>
+      <a href="#" data-reveal-id="new-friend-container" class="button">Add Friend</a>
+
+      <!-- End Add Friend Modal -->
+
+    <% else %>
+      <p>Already Friends</p>
+    <% end %>
   <% end %>
 <% end %>
 
@@ -41,17 +66,17 @@
   <% if @user.pending_friendships.any? %>
     <h2>Pending Friends:</h2>
     <% @user.pending_friendships.each do |friendship| %>
-      <%= friendship.target.username %>
+      <%= friendship.target.username %><br>
     <% end %>
   <% end %>
-<% end %>
 
-<% if @user.requested_friendships.any? %>
+  <% if @user.requested_friendships.any? %>
   <h3>Friends that have requested you:</h3>
     <% @user.requested_friendships.each do |friendship| %>
       <%= link_to friendship.sender.username, user_path(friendship.sender) %>
       <%= link_to 'Confirm Friendship  ', edit_friendship_path(friendship.sender), class: "success tiny button" %>
     <% end %>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_user_path(@user), {class: "tiny button", :'data-reveal-id' => "edit-user-container"} %>

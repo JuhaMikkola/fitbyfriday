@@ -14,20 +14,22 @@
   <% end %>
 </div>
 
-<h2>Awaiting Confirmation</h2>
-<% if @workout.creator == current_user %>
-  <% @workout.invitations.each do |i| %>
-    <% if i.confirmed == false %>
-      <%= link_to i.target.username, workout_invitation_path(i.workout_id, i) %><br>
-    <% end %>
-  <% end %>
-<% else %>
+<div id="awaiting-confirmation">
+  <h2>Awaiting Confirmation</h2>
+  <% if @workout.creator == current_user %>
     <% @workout.invitations.each do |i| %>
-    <% if i.confirmed == false %>
-      <%= i.target.username %><br>
+      <% if i.confirmed == false %>
+        <%= link_to i.target.username, workout_invitation_path(i.workout_id, i) %><br>
+      <% end %>
+    <% end %>
+  <% else %>
+      <% @workout.invitations.each do |i| %>
+      <% if i.confirmed == false %>
+        <%= i.target.username %><br>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>
 
   <% if @invite.present? %>
   <% if @invite.errors.any? %>
@@ -36,28 +38,29 @@
   <% end %>
 
 
-  <h3>Invite a friend in your group</h3>
+
+  <h3>Add Friends to this Workout</h3>
 
   <% current_user.friends.each do |friend| %>
-
-    <%= form_tag invite_workout_path, :method => :post do %>
+    <% if !friend.received_requests.find_by_workout_id(@workout).present? || !friend.workouts.find(@workout).present? %>
+    <%= form_tag invite_workout_path, :method => :post, :class => "friend-invite-form" do %>
       <%= friend.username %>
       <%= hidden_field_tag(:user_id, friend.id) %>
       <div class="actions">
         <%= submit_tag "Invite Friend" %>
       </div>
     <% end %>
+    <% end %>
   <% end %>
 
  <br>
- <br>
-  or
+
 
 
   <div class="row">
   <div class="small-12 columns">
     <h3>Invite a friend to join Fit By Friday</h3>
-    <%= form_tag('app_invite', method: "post") do %>
+    <%= form_tag('app_invite_path', method: "post") do %>
     <%= email_field_tag(:email) %>
     <%= hidden_field_tag(current_user) %>
     <%= button_tag("Invite") %>

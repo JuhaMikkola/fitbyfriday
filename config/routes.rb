@@ -21,8 +21,7 @@ Fitbyfriday::Application.routes.draw do
 
 
   resources :ratings do
-    post 'confirm_yes', on: :member
-    post 'confirm_no', on: :member
+    post 'confirm', on: :member
   end
 
   get 'login' => 'user_sessions#new', :as => :login
