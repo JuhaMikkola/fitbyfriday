@@ -31,7 +31,7 @@
         dataType: "json",
         success: function(data) {
           self.remove();
-          $("#attending").append(data.name + "<br>")
+          $("#awaiting-confirmation").append(data.name + "<br>")
         }
       });
     });
