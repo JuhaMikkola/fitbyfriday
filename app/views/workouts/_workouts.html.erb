@@ -6,7 +6,7 @@
 
     <% @workouts_by_day.each do |w| %>
 
-      <div class="workout-day" id="">
+      <div class="workout-day" >
         <time datetime="<%= w[0] %>"><%= w[0].strftime("%A, %b %d") %></time>
 
         <% w[1].each do |workout| %>
