@@ -1,7 +1,17 @@
 <% if @user.sent_ratings.where(:confirmed => nil).any? %>
   <div class="rating-requests">
     <% @user.sent_ratings.where(:confirmed => nil).each do |rating| %>
-     <h4><%= link_to "Was " + rating.rated.username + " at " + rating.workout.activity + " ?" , rating_path(rating.id) %> </h4>
+    <div class="rating">
+      <div class="row">
+        <div class="small-8 columns">
+          <h4><%= link_to "Was " + rating.rated.username + " at " + rating.workout.activity + "?" , rating_path(rating.id) %> </h4>
+        </div>
+        <div class="small-4 columns confirm-buttons">
+      <i class="fi-check"></i>
+      <i class="fi-x"></i>
+        </div>
+    </div>
+  </div>
     <% end %>
   </div>
   <% if false %>

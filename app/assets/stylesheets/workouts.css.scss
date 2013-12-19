@@ -14,6 +14,23 @@ div.workout-week {
 }
 
 
-div.notification {
+div.notifications {
   background-color: #f2f2f2;
+  text-align: left;
+}
+
+div.rating {
+  border-bottom: 1px solid lightgrey;
+}
+
+.confirm-buttons {
+  float: right;
+}
+
+.fi-check {
+  font-size: 2em;
+}
+
+.fi-x {
+  font-size: 2em;
 }

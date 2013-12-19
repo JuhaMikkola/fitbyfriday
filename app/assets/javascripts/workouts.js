@@ -35,6 +35,10 @@
         }
       });
     });
+    $('.rating').on('click', function(event) {
+      event.preventDefault();
+      $(this).slideUp();
+    });
   });
 })(jQuery);
 
