@@ -5,7 +5,7 @@
 
 <% @users.each do |user| %>
 <div class="workout-week">
-    Username: <%= user.username %> <br> <br>
+    Username: <%= link_to user.username %> <br> <br>
     Email: <%= user.email %> <br>
     <br>
   <% end %>
