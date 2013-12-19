@@ -28,6 +28,7 @@
 <% if current_user == @user %>
   This is your profile!
 <% else %>
+
   <% if @user.friends.where(current_user) %>
 
   <div id="new-friend-container" class="reveal-modal" data-reveal>
@@ -41,7 +42,8 @@
       </div>
   </div>
 
-  <a href="#" data-reveal-id="new-friend-container" class="button">Add Friend</a>
+  <% unless current_user.friends.include?(@user) || current_user.pending_friendships.where(target_id: @user).present? %>
+    <a href="#" data-reveal-id="new-friend-container" class="button">Add Friend</a>
 
   <% else %>
       Already Friends
@@ -63,14 +65,14 @@
       <%= friendship.target.username %><br>
     <% end %>
   <% end %>
-<% end %>
 
-<% if @user.requested_friendships.any? %>
+  <% if @user.requested_friendships.any? %>
   <h3>Friends that have requested you:</h3>
     <% @user.requested_friendships.each do |friendship| %>
       <%= link_to friendship.sender.username, user_path(friendship.sender) %>
       <%= link_to 'Confirm Friendship  ', edit_friendship_path(friendship.sender), class: "success tiny button" %>
     <% end %>
+  <% end %>
 <% end %>
 
 

@@ -1,10 +1,9 @@
-<div >
-
 <% if @user.sent_ratings.where(:confirmed => nil).any? %>
-  <% @user.sent_ratings.where(:confirmed => nil).each do |rating| %>
-   <h4><%= link_to "Was " + rating.rated.username + " at " + rating.workout.activity + " ?" , rating_path(rating.id) %> </h4>
-  <% end %>
-
+  <div class="rating-requests">
+    <% @user.sent_ratings.where(:confirmed => nil).each do |rating| %>
+     <h4><%= link_to "Was " + rating.rated.username + " at " + rating.workout.activity + " ?" , rating_path(rating.id) %> </h4>
+    <% end %>
+  </div>
   <% if false %>
     <% if @user.sent_ratings.joins(:workout).where("confirmed = ? and workouts.start_date > ?", nil, Date.today.to_date).any? %>
     <% end %>
