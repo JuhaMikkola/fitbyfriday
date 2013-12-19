@@ -2,15 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.workout-day {
-  border-bottom: 1px solid #eee;
-  padding: 1em;
+div.workout-week {
+  border-top: 1px solid #eee;
 }
 
+div.workout-day {
+  text-align: left;
+}
 
-div.workout-week {
-   border-top: 1px solid #eee;
-  padding: 1em;
+div.workout {
+  border-bottom: 1px solid lightgrey;
+  text-align: left;
+}
+
+div.workout-details {
+
 }
 
 
@@ -22,6 +28,7 @@ div.notifications {
 div.rating {
   border-bottom: 1px solid lightgrey;
 }
+
 
 .confirm-buttons {
   float: right;
