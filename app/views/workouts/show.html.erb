@@ -1,16 +1,42 @@
-<h1>Workout details</h1>
+<div class="row">
+  <div class="small-12 column">
+    <h2><%= @workout.activity %></h2>
+  </div>
+</div>
 
-<%= @workout.activity %><br>
-<%= @workout.location %><br>
+<div class="row">
+  <div class="small-12 column">
+    <h4 class="subheader"><%= @workout.location %></h3>
+  </div>
+</div>
 
-<%= @workout.start_date.strftime("%A, %b %d") %><br>
-<%= @workout.start_time.strftime("%I:%M:%S %p") %><br>
+<div class="row">
+  <div class="small-12 column">
+    <h4 class="subheader"><%= @workout.start_time.strftime("%I:%M:%S %p") %> at <%= @workout.start_date.strftime("%A, %b %d") %></h4>
+  </div>
+</div>
 
 
-<div id="attending">
-  <h2>Who's Attending:</h2>
+
+<div class="attending">
+  <div class="row">
+    <div class="small-12 column">
+      <h2>Who's Attending:</h2>
+    </div>
+  </div>
   <% @workout.user_workouts.each do |w| %>
-    <%= User.find(w.user_id).username %><br>
+  <div class="user">
+  <div class="row">
+    <div class="small-3 column">
+      <%= gravatar_for(w.user) %>
+      <div class="row">
+        <div class="small-3 column">
+          <%= w.user.username %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   <% end %>
 </div>
 
