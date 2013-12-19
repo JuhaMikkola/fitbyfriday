@@ -1,6 +1,6 @@
 <% if current_user %>
 
-  <div class="notification">
+  <div class="notifications">
       <%= render 'rating_requests' %>
       <%= render 'invites' %>
       <%= render 'friends' %>
@@ -15,7 +15,14 @@
     <%= render 'new_workout' %>
   </div>
 
-  <a href="#" data-reveal-id="new-workout-container" class="button">New Workout</a>
+  <div class="row add-workout">
+    <div class="small-1 column">
+      <a href="#" data-reveal-id="new-workout-container"><i class="fi-plus"></i></a>
+    </div>
+    <div class="small-9 column add-text">
+      <h3>Add New Workout</h3>
+    </div>
+  </div>
 
 <% else %>
 
