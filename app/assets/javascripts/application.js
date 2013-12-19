@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require foundation
 //= require Chart
-//= require_tree .
+//= require profiles
+//= require workouts
+
 
 $(function(){ $(document).foundation(); });
