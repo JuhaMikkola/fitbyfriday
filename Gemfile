@@ -7,6 +7,7 @@ gem 'rails', '4.0.1'
 gem 'pg'
 gem 'sorcery'
 gem 'foundation-rails'
+gem 'chart-js-rails'
 
 group :development, :test do
 
@@ -21,6 +22,7 @@ gem 'jquery-rails'
 gem 'jbuilder'
 gem 'jquery-ui-rails'
 
+gem 'whenever', :require => false
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
