@@ -23,13 +23,34 @@
 
 <br>
 
+
 <% if current_user == @user %>
-  This is your profile!
+  <p>This is your profile!</p>
+
+  <!-- Add Friend Model -->
 <% else %>
-  <% unless current_user.friends.include?(@user) || current_user.pending_friendships.where(target_id: @user).present? %>
-    <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
-  <% else %>
-      Already Friends
+
+  <% if @user.friends.where(current_user) %>
+
+    <div id="new-friend-container" class="reveal-modal" data-reveal>
+      <h2><%= current_user.username %>, are you sure you want to add <%= @friendship.target.username %> as a friend?</h2>
+
+        <div>
+        <%= form_for @friendship do |f| %>
+          <%= f.hidden_field(:target_id) %>
+          <%= f.submit "Make Us Friends", class: "button" %>
+        <% end %>
+        </div>
+    </div>
+
+    <% unless current_user.friends.include?(@user) || current_user.pending_friendships.where(target_id: @user).present? %>
+      <a href="#" data-reveal-id="new-friend-container" class="button">Add Friend</a>
+
+      <!-- End Add Friend Modal -->
+
+    <% else %>
+      <p>Already Friends</p>
+    <% end %>
   <% end %>
 <% end %>
 

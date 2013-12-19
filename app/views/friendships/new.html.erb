@@ -1,11 +1,8 @@
 <h2><%= current_user.username %>, are you sure you want to add <%= @friendship.target.username %> as a friend?</h2>
 
-<p><div>
-<%= form_for @friendship do |f| %>
-
-  <%= f.hidden_field(:target_id) %>
-
-  <%= f.submit "Make Us Friends", class: "button" %>
-
-<% end %>
-</div></p>
+  <div>
+  <%= form_for @friendship do |f| %>
+    <%= f.hidden_field(:target_id) %>
+    <%= f.submit "Make Us Friends", class: "button" %>
+  <% end %>
+  </div>
