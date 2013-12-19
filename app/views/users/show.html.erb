@@ -27,7 +27,23 @@
   This is your profile!
 <% else %>
   <% if @user.friends.where(current_user) %>
-    <%= link_to 'Add Friend', new_friendship_path(target_id: @user.id), class: "button" %>
+
+  <div id="new-friend-container" class="reveal-modal" data-reveal>
+    <h2><%= current_user.username %>, are you sure you want to add <%= @friendship.target.username %> as a friend?</h2>
+
+  <div>
+  <%= form_for @friendship do |f| %>
+    <%= f.hidden_field(:target_id) %>
+    <%= f.submit "Make Us Friends", class: "button" %>
+  <% end %>
+  </div>
+
+
+  </div>
+
+  <a href="#" data-reveal-id="new-friend-container" class="button">Add Friend</a>
+
+
   <% else %>
       Already Friends
   <% end %>
