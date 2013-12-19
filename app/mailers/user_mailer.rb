@@ -30,4 +30,12 @@ class UserMailer < ActionMailer::Base
 
     mail to: email, subject: "#{@user.username} has invited you to join FitByFriday!"
   end
+
+  def rating_invite(rating, user)
+    @user = user
+    @rating = rating
+
+    mail to: user.email, subject: "Time to rate your buddy!"
+  end
+
 end

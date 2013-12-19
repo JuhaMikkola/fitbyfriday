@@ -1,0 +1,3 @@
+Hey, <%= @rating.rater.username %>! Did your friend <%= @rating.rated.username %> show up to your workout? Make sure to give them a rating or we'll assume the worst and give them a no show. This will cause their accountability rating to plummet and make others think they are an unrealiable human. If they showed up, you probably don't want this to happen. So rate them now!
+
+<%= link_to "Rate them now", user_path(@rating.rater.id) %>

@@ -34,8 +34,10 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.1.4)
+
     chart-js-rails (0.0.6)
       railties (> 3.1)
+    chronic (0.10.2)
     coderay (1.1.0)
     columnize (0.3.6)
     debug_inspector (0.0.2)
@@ -133,6 +135,9 @@ GEM
     uglifier (2.3.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    whenever (0.9.0)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -152,3 +157,4 @@ DEPENDENCIES
   sdoc
   sorcery
   uglifier
+  whenever
