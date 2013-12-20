@@ -1,36 +1,60 @@
-<h1>Workout details</h1>
+<div class="row">
+  <div class="small-12 column">
+    <h2><%= @workout.activity %></h2>
+  </div>
+</div>
 
-<%= @workout.activity %><br>
-<%= @workout.location %><br>
+<div class="row">
+  <div class="small-12 column">
+    <h4 class="subheader"><%= @workout.location %></h3>
+  </div>
+</div>
 
-<%= @workout.start_date.strftime("%A, %b %d") %><br>
-<%= @workout.start_time.strftime("%I:%M:%S %p") %><br>
+<div class="row">
+  <div class="small-12 column">
+    <h4 class="subheader"><%= @workout.start_date.strftime("%A, %b %d") %> at <%= @workout.start_time.strftime("%I:%M %p") %></h4>
+  </div>
+</div>
 
-
-<div id="attending">
-  <h2>Who's Attending:</h2>
+<div class="attending">
+  <div class="row">
+    <div class="small-12 column">
+      <h2>Who's Attending:</h2>
+    </div>
+  </div>
+    <div class="row">
   <% @workout.user_workouts.each do |w| %>
-    <%= User.find(w.user_id).username %><br>
-  <% end %>
+      <div class="small-4 column">
+        <%= link_to gravatar_for(w.user), w.user %>
+      <div class="row participant-name">
+        <div class="small-3-center column">
+          <h4><%= link_to w.user.username, w.user %></h4>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
 
-<div id="awaiting-confirmation">
-  <h2>Awaiting Confirmation</h2>
-  <% if @workout.creator == current_user %>
-    <% @workout.invitations.each do |i| %>
-      <% if i.confirmed == false %>
-        <%= link_to i.target.username, workout_invitation_path(i.workout_id, i) %><br>
-      <% end %>
-    <% end %>
-  <% else %>
-      <% @workout.invitations.each do |i| %>
-      <% if i.confirmed == false %>
-        <%= i.target.username %><br>
-      <% end %>
-    <% end %>
-  <% end %>
 </div>
-
+<% if @workout.invitations.where(confirmed: false).any? %>
+  <div id="awaiting-confirmation">
+      <h2>Awaiting Confirmation</h2>
+      <% if @workout.creator == current_user %>
+        <% @workout.invitations.each do |i| %>
+          <% if i.confirmed == false %>
+            <%= link_to i.target.username, workout_invitation_path(i.workout_id, i) %><br>
+          <% end %>
+        <% end %>
+      <% else %>
+          <% @workout.invitations.each do |i| %>
+          <% if i.confirmed == false %>
+            <%= i.target.username %><br>
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
+<% end %>
   <% if @invite.present? %>
   <% if @invite.errors.any? %>
   ERROR

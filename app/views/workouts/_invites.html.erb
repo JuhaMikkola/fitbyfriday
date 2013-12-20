@@ -1,4 +1,5 @@
 <% if @user.received_requests.where(:confirmed => "false").any? %>
+
   <div class="workout-invites">
     <% @user.received_requests.each do |r| %>
       <% if r.confirmed == false %>
@@ -12,6 +13,7 @@
           </div>
         </div>
         </div>
+
       <% end %>
   </div>
 <% end %>
