@@ -20,7 +20,7 @@
           </div>
           <div class="row">
             <div class="small-12 column workout-details">
-              <h5><%= workout.start_time.strftime("%I:%M %p") %> at <%= workout.location %></h5>
+              <h5><%= workout.start_time.strftime("%e:%M%P") %> at <%= workout.location.capitalize %></h5>
             </div>
           </div>
         </div>
