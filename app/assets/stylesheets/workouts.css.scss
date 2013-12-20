@@ -42,8 +42,8 @@ div.workout {
 
 
 .fa {
-padding-top: 40px;
-padding-left: 10px;
+padding-top: 10px;
+padding-left: 20px;
 }
 
 
@@ -91,6 +91,17 @@ div.rating {
   text-align: left;
 }
 
+h5 {
+  font-size: 11px;
+  text-align: left;
+  padding-top: 5px;
+}
+
+h6 {
+  font-size: 12px;
+  padding-top: 5px;
+}
+
 .request {
   border-bottom: 1px solid lightgrey;
 }
@@ -101,4 +112,21 @@ div.rating {
 
 .ignore {
   background: red;
+}
+
+// quotes
+
+
+article {
+ width: 85%;
+  margin: 0 auto;
+}
+
+.quote {
+font-family: Georgia,"Times New Roman",Times,serif;
+font-style: italic;
+font-size: 23px;
+line-height: 1.5;
+color: #ccd4d9;
+margin-bottom: 10px;
 }

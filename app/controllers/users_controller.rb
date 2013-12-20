@@ -41,7 +41,7 @@ class UsersController < ApplicationController
         # send email
         UserMailer.signup_confirmation(@user).deliver
         auto_login(@user)
-        format.html { redirect_to @user, notice: "Welcome #{@user.username}" }
+        format.html { redirect_to workouts_path, notice: "Welcome #{@user.username}" }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }

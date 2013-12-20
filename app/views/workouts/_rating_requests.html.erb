@@ -7,10 +7,10 @@
           <h5>Was <%= rating.rated.username %> at <%= rating.workout.activity %>? </h5>
         </div>
         <div class="small-3 columns">
-          <h5><%= link_to 'Yes', confirm_rating_path(rating), data: {rating_confirmation: true}, class: "confirm-rating" %></h5>
+          <h6><%= link_to 'Yes', confirm_rating_path(rating), data: {rating_confirmation: true}, class: "confirm-rating" %></h6>
         </div>
         <div class="small-3 columns">
-          <h5><%= link_to 'No', confirm_rating_path(rating), data: {rating_confirmation: false}, class: "confirm-rating" %></h5>
+          <h6><%= link_to 'No', confirm_rating_path(rating), data: {rating_confirmation: false}, class: "confirm-rating" %></h6>
         </div>
         </div>
     </div>
