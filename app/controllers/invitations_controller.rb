@@ -26,13 +26,6 @@ class InvitationsController < ApplicationController
     redirect_to workouts_path
   end
 
-  def decline
-    @invitation = Invitation.find(params[:id])
-    @invitation.destroy
-    # Send email or text to sender to notify them that
-    redirect_to workouts_path
-  end
-
   def app_invite
     if @user = User.find_by_email(params[:email])
       redirect_to @user
@@ -41,4 +34,12 @@ class InvitationsController < ApplicationController
       redirect_to workouts_path
     end
   end
+
+  def decline
+    @invitation = Invitation.find(params[:id])
+    @invitation.destroy
+    # Send email or text to sender to notify them that
+    redirect_to workouts_path
+  end
+
 end
