@@ -8,9 +8,9 @@
             <h5><%= r.sender.username %> has invited you to <%= r.workout.activity %></h5>
           </div>
           <div class="small-3 columns">
-            <h5><%= link_to 'Confirm', accept_workout_invitation_path(r.workout, r), method: :post  %></h5>
+            <h6><%= link_to 'Confirm', accept_workout_invitation_path(r.workout, r), method: :post  %></h6>
           </div>
-            <h5><%= link_to 'Decline', decline_workout_invitation_path(r.workout, r), method: :delete %></h5>
+            <h6><%= link_to 'Decline', decline_workout_invitation_path(r.workout, r), method: :delete %></h6>
           </div>
         </div>
         </div>
