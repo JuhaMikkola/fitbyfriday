@@ -12,17 +12,19 @@ div#user-list {
   width: 400px;
 }
 
-div.workout-day {
+.workout-day {
   text-align: left;
+  font-weight: 200;
+    border-top: 1px solid lightgrey;
+
 }
 
 div.workout {
-  border-bottom: 1px solid lightgrey;
   text-align: left;
 }
 
-div.workout-details {
-
+.workout-details {
+  margin-top: -15px;
 }
 
 
@@ -69,3 +71,4 @@ div.rating {
   border-bottom: 1px solid lightgrey;
   text-align: left;
 }
+
