@@ -25,10 +25,10 @@
     <div class="row">
   <% @workout.user_workouts.each do |w| %>
       <div class="small-4 column">
-      <%= gravatar_for(w.user) %>
+        <%= link_to gravatar_for(w.user), w.user %>
       <div class="row participant-name">
         <div class="small-3-center column">
-          <h4><%= w.user.username %></h4>
+          <h4><%= link_to w.user.username, w.user %></h4>
         </div>
       </div>
     </div>
@@ -37,24 +37,24 @@
 </div>
 
 </div>
-
-<div id="awaiting-confirmation">
-  <h2>Awaiting Confirmation</h2>
-  <% if @workout.creator == current_user %>
-    <% @workout.invitations.each do |i| %>
-      <% if i.confirmed == false %>
-        <%= link_to i.target.username, workout_invitation_path(i.workout_id, i) %><br>
+<% if @workout.invitations.where(confirmed: false).any? %>
+  <div id="awaiting-confirmation">
+      <h2>Awaiting Confirmation</h2>
+      <% if @workout.creator == current_user %>
+        <% @workout.invitations.each do |i| %>
+          <% if i.confirmed == false %>
+            <%= link_to i.target.username, workout_invitation_path(i.workout_id, i) %><br>
+          <% end %>
+        <% end %>
+      <% else %>
+          <% @workout.invitations.each do |i| %>
+          <% if i.confirmed == false %>
+            <%= i.target.username %><br>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-  <% else %>
-      <% @workout.invitations.each do |i| %>
-      <% if i.confirmed == false %>
-        <%= i.target.username %><br>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
-
+  </div>
+<% end %>
   <% if @invite.present? %>
   <% if @invite.errors.any? %>
   ERROR
