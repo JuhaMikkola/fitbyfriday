@@ -14,14 +14,17 @@
   <%= link_to "#{@user.email}", "mailto:#{@user.email}" %>
 </p>
 
-<div class="panel" id="accountability-score" data-total="<%= @user.received_ratings.where(:confirmed => true).count.to_f %>" data-confirmed="<%= @user.received_ratings.where(:confirmed => false).count.to_f %>">
+<div class="panel" id="accountability-score" data-total="<%= @user.received_ratings.where(confirmed: true).count.to_f %>" data-confirmed="<%= @user.received_ratings.count.to_f - @user.received_ratings.where(confirmed: true).count.to_f %>">
   Accountability Score <br>
+
+  <div class="pie-center">
+
   <% if @user.received_ratings.any? %>
-    <%= ((@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).floor).to_s + "%" %>
+    <%= ((@user.received_ratings.where(confirmed: true).count / @user.received_ratings.count.to_f * 100).floor).to_s + "%" %>
   <% end %>
 </div>
 
-<canvas id="myChart" width="200" height="200"></canvas>
+<canvas id="myChart" class="chart" width="200" height="200"></canvas>
 
 <br>
 

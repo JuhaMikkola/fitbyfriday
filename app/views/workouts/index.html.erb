@@ -1,14 +1,21 @@
 <% if current_user %>
 
   <div class="notifications">
-      <%= render 'rating_requests' %>
-      <%= render 'invites' %>
-      <%= render 'friends' %>
+    <%= render 'invites' %>
   </div>
+  <div class="notifications">
+    <%= render 'rating_requests' %>
+  </div>
+  <div class="notifications">
+    <%= render 'friends' %>
+  </div>
+
 
 <div class="row" id="add-workout">
     <div class="small-12 small-centered column">
-      <a href="#" data-reveal-id="new-workout-container"><i class="fi-plus"></i></a>
+      <a href="#" data-reveal-id="new-workout-container"><%= image_tag "plus.png", class: "fa" %></a>
+        <h4>New Workout</h4>
+        <!-- <i class="fa fa-plus-circle fa-3x"></i> -->
     </div><br>
   </div>
 
@@ -29,6 +36,8 @@
   <div id="new-workout-container" class="reveal-modal" data-reveal>
     <%= render 'new_workout' %>
   </div>
+
+
 
 
 

@@ -1,7 +1,17 @@
 <% if current_user.requested_friendships.any? %>
 
   <% current_user.requested_friendships.each do |request| %>
-      <%= link_to request.sender.username, user_path(request.sender) %>
-      <%= link_to 'Confirm Friendship  ', confirm_friendship_path(request), method: :post, class: "success tiny button" %>
+    <div class="row request">
+      <div class="small-6 columns">
+        <h5><%= request.sender.username %> wants to be your friend:</h5>
+      </div>
+      <div class="small-3 columns">
+        <h5><%= link_to 'Confirm', confirm_friendship_path(request), method: :post %><h5>
+      </div>
+        <div class="small-3 columns">
+          <h5><%= link_to 'Decline', decline_friendship_path(request), method: :post %></h5>
+        </div>
+      </div>
+    </div>
   <% end %>
 <% end %>

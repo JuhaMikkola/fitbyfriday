@@ -1,6 +1,6 @@
 <% if @user.sent_ratings.where(:confirmed => nil).any? %>
   <div class="rating-requests">
-    <% @user.sent_ratings.where(:confirmed => nil).each do |rating| %>
+    <% @user.sent_ratings.where(confirmed: nil).each do |rating| %>
     <div class="rating">
       <div class="row">
         <div class="small-8 columns">

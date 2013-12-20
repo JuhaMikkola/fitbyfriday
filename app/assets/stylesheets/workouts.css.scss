@@ -16,17 +16,34 @@ div#user-list {
   width: 400px;
 }
 
-div.workout-day {
+.workout-day {
   text-align: left;
+  font-weight: 200;
+    border-top: 1px solid lightgrey;
+
 }
 
 div.workout {
-  border-bottom: 1px solid lightgrey;
   text-align: left;
 }
 
-div.workout-details {
+.workout-details {
+  margin-top: -15px;
+}
 
+.days {
+  background-color: #1693A5;
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+}
+
+
+.fa {
+padding-top: 40px;
+padding-left: 10px;
 }
 
 
@@ -72,4 +89,16 @@ div.rating {
 .invite {
   border-bottom: 1px solid lightgrey;
   text-align: left;
+}
+
+.request {
+  border-bottom: 1px solid lightgrey;
+}
+
+.confirm {
+  background: lightgreen;
+}
+
+.ignore {
+  background: red;
 }
