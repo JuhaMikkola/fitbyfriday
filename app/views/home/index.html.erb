@@ -4,13 +4,17 @@
 
   <div class="container">
     <div class="row">
+
       <%= image_tag "logo.png", class: "animated bounce logo2" %>
 
         <p>The fast way to schedule a workout with friends.</p>
 
            <div class="signup">
 
-          <a href="#" data-reveal-id="new-user-container" class="button tiny">Sign Up</a> or <%= link_to "Login", login_path %>
+          <%= link_to 'Register with Facebook', auth_at_provider_path(:provider => :facebook) %>
+
+
+          <a href="#" data-reveal-id="new-user-container" class="button tiny">Register with Email</a> <br> <%= link_to "Sign in with Email", login_path, class: "button tiny"%>
         </div>
 
          <%= image_tag "ipone.png", class: 'logoff' %>

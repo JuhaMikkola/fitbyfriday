@@ -1,7 +1,14 @@
 Fitbyfriday::Application.routes.draw do
 
+
   get "home/index"
+  # config/routes.rb
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/callback" => "oauths#callback" # for use with Github
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+
   root 'home#index'
+
 
   resources :user_sessions
   resources :users
