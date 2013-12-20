@@ -6,7 +6,10 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    @user = User.new
+    # @user = User.new
+
+    @friendship = Friendship.new
+    # @friendship.target = @user
   end
 
   # GET /users/1
