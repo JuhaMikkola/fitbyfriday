@@ -39,17 +39,18 @@
 
 
 
+
   <h3>Add Friends to this Workout</h3>
 
   <% current_user.friends.each do |friend| %>
-    <% if !friend.received_requests.find_by_workout_id(@workout).present? || !friend.workouts.find(@workout).present? %>
-    <%= form_tag invite_workout_path, :method => :post, :class => "friend-invite-form" do %>
-      <%= friend.username %>
-      <%= hidden_field_tag(:user_id, friend.id) %>
-      <div class="actions">
-        <%= submit_tag "Invite Friend" %>
-      </div>
-    <% end %>
+    <% unless friend.workouts.where(id: @workout).present? || friend.received_requests.where(workout: @workout).present? %>
+      <%= form_tag invite_workout_path, :method => :post, :class => "friend-invite-form" do %>
+        <%= friend.username %>
+        <%= hidden_field_tag(:user_id, friend.id) %>
+        <div class="actions">
+          <%= submit_tag "Invite Friend" %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 
