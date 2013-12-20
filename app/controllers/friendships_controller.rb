@@ -19,10 +19,9 @@ class FriendshipsController < ApplicationController
 
   def confirm
     @friendship = Friendship.find(params[:id])
-    # @confirmed_friendship = Friendship.new(sender: current_user, target: @friendship.sender, confirmed: true)
+    @confirmed_friendship = Friendship.new(sender: current_user, target: @friendship.sender, confirmed: true)
 
-    # if @confirmed_friendship.save && @friendship.update_attribute(:confirmed, true)
-    if @friendship.update_attribute(:confirmed, true)
+    if @confirmed_friendship.save && @friendship.update_attribute(:confirmed, true)
       redirect_to workouts_path
     else
       render 'index'
