@@ -12,11 +12,9 @@
 
 <div class="row">
   <div class="small-12 column">
-    <h4 class="subheader"><%= @workout.start_time.strftime("%I:%M:%S %p") %> at <%= @workout.start_date.strftime("%A, %b %d") %></h4>
+    <h4 class="subheader"><%= @workout.start_date.strftime("%A, %b %d") %> at <%= @workout.start_time.strftime("%I:%M %p") %></h4>
   </div>
 </div>
-
-
 
 <div class="attending">
   <div class="row">
@@ -25,11 +23,12 @@
     </div>
   </div>
   <% @workout.user_workouts.each do |w| %>
-  <div class="user">
-  <div class="row">
-    <div class="small-3 column">
+  <div class="small-12 column">
+    <div class="row">
+
+      <div class="small-4 column">
       <%= gravatar_for(w.user) %>
-      <div class="row">
+      <div class="row participant-name">
         <div class="small-3 column">
           <%= w.user.username %>
         </div>

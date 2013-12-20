@@ -3,6 +3,7 @@
          <% @user.received_requests.each do |r| %>
         <% if r.confirmed == false %>
         <h4><%= link_to r.sender.username + " has invited you to " + r.workout.activity, workout_invitation_url(r.workout, r) %></h4>
+        <%= link_to "Accept", accept_workout_invitation_path(r.workout, r), method: :post %> or <%= link_to "Decline", decline_workout_invitation_path(r.workout, r), method: :delete %>
         <% end %>
       <% end %>
 
