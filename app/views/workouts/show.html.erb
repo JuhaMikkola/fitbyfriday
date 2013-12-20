@@ -1,30 +1,30 @@
 <div class="row">
   <div class="small-12 column">
-    <h2><%= @workout.activity %></h2>
+    <h1><%= @workout.activity %></h1>
   </div>
 </div>
 
 <div class="row">
   <div class="small-12 column">
-    <h4 class="subheader"><%= @workout.location %></h3>
+    <h3 class="subheader"><%= @workout.location %></h3>
   </div>
 </div>
 
 <div class="row">
   <div class="small-12 column">
-    <h4 class="subheader"><%= @workout.start_date.strftime("%A, %b %d") %> at <%= @workout.start_time.strftime("%I:%M %p") %></h4>
+    <h3 class="subheader"><%= @workout.start_date.strftime("%A, %b %d") %> at <%= @workout.start_time.strftime("%I:%M %p") %></h4>
   </div>
 </div>
 
 <div class="attending">
   <div class="row">
     <div class="small-12 column">
-      <h2>Who's Attending:</h2>
+      <h2>Who's Attending?</h2>
     </div>
   </div>
     <div class="row">
   <% @workout.user_workouts.each do |w| %>
-      <div class="small-4 column">
+    <div class="small-4 column">
         <%= link_to gravatar_for(w.user), w.user %>
       <div class="row participant-name">
         <div class="small-3-center column">
@@ -61,24 +61,29 @@
   <% end %>
   <% end %>
 
-  <h3>Add Friends to this Workout</h3>
+  <h2>Invite Your Friends</h2>
 
+  <div class="row">
   <% current_user.friends.each do |friend| %>
-    <% unless friend.workouts.where(id: @workout).present? || friend.received_requests.where(workout: @workout).present? %>
-      <%= form_tag invite_workout_path, :method => :post, :class => "friend-invite-form" do %>
-        <%= friend.username %>
-        <%= hidden_field_tag(:user_id, friend.id) %>
-        <div class="actions">
-          <%= submit_tag "Invite Friend" %>
-        </div>
+
+      <div class="small-6 large-3 columns">
+        <% unless friend.workouts.where(id: @workout).present? || friend.received_requests.where(workout: @workout).present? %>
+        <%= form_tag invite_workout_path, :method => :post, :class => "friend-invite-form" do %>
+          <%= friend.username %>
+          <%= hidden_field_tag(:user_id, friend.id) %>
+          <div class="actions" id="invitefriend">
+            <%= submit_tag "Invite Friend", class: "tiny button" %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+      </div>
   <% end %>
+  </div>
 
  <br>
 
 <br>
 
-<%= link_to "Back", root_path %>
+<%= link_to "Find Friends", users_path, class: "button" %>
 
 
