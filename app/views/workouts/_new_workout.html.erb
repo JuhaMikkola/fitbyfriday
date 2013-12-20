@@ -1,34 +1,49 @@
 <h3>New Workout</h3>
 <%= form_for @workout do |w| %>
 
-  <div class="field">
-    <%= w.label :activity %>
-    <%= w.text_field :activity %><br>
-  </div>
+  <div class="row">
+    <div class="small-12 large-6 columns">
+      <%= w.label :activity %>
+      <%= w.text_field :activity %>
+    </div>
 
-  <div class="field">
+    <div class="small-12 large-6 columns">
     <%= w.label :location %>
     <%= w.text_field :location %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= w.label :start_date %>
-    <%= w.date_select :start_date %>
+  <div class="row">
+
+    <div class="small-12 large-6 columns">
+      <%= w.label :start_date %>
+      <%= w.date_field :start_date %>
+    </div>
+
+    <div class="small-12 large-6 columns">
+      <%= w.label :start_time %>
+      <%= w.time_field :start_time, :ampm => true, :minute_step => 5 %>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= w.label :start_time %>
-    <%= w.time_select :start_time, :ampm => true, :minute_step => 5 %>
+  <div class="row">
+
+    <div class="small-12 large-12 columns">
+      <%= w.label "What are you putting on the line?" %>
+      <%= w.text_field :punishment %>
+    </div>
+
   </div>
 
-  <div class="field">
-    <%= w.label "What are you putting on the line?" %>
-    <%= w.text_field :punishment %>
-  </div>
+  <div class="row">
 
-  <div class="action">
-    <%= w.submit nil, class: "button" %>
+    <div class="action">
+      <%= w.submit nil, class: "button" %>
+    </div>
+
   </div>
 
   <a class="close-reveal-modal">&#215;</a>
+
 <% end %>
