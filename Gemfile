@@ -11,6 +11,8 @@ gem 'chart-js-rails'
 gem 'foundation-icons-sass-rails'
 gem "animate-rails"
 gem "font-awesome-rails"
+gem 'rails_12factor', group: :production
+
 group :development, :test do
 
   gem 'debugger'
