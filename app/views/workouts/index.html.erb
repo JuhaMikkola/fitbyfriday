@@ -6,23 +6,31 @@
       <%= render 'friends' %>
   </div>
 
+<div class="row" id="add-workout">
+    <div class="small-12 small-centered column">
+      <a href="#" data-reveal-id="new-workout-container"><i class="fi-plus"></i></a>
+    </div><br>
+  </div>
+
   <div id="workout-container">
     <%= render 'workouts' %>
   </div>
+
+<div class="panel" id="accountability-score" data-total="<%= @user.received_ratings.where(:confirmed => true).count.to_f %>" data-confirmed="<%= @user.received_ratings.where(:confirmed => false).count.to_f %>">
+  <%= current_user.username %>'s Accountability <br>
+  <% if @user.received_ratings.any? %>
+    <%= ((@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).floor).to_s + "%" %>
+  <% end %>
+</div>
+
+<canvas id="myChart" width="200" height="200"></canvas>
 
 
   <div id="new-workout-container" class="reveal-modal" data-reveal>
     <%= render 'new_workout' %>
   </div>
 
-  <div class="row add-workout">
-    <div class="small-1 column">
-      <a href="#" data-reveal-id="new-workout-container"><i class="fi-plus"></i></a>
-    </div>
-    <div class="small-9 column add-text">
-      <h3>Add New Workout</h3>
-    </div>
-  </div>
+
 
 
 

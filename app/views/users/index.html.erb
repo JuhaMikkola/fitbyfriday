@@ -1,7 +1,12 @@
-<h1>Listing Users</h1>
+<div class="row">
+  <div class="small-12 large-12 columns"><h1>Get Fit with Friends</h1>
+  </div>
+</div>
 
+<% count = 1 %>
 
 <% @users.each do |user| %>
+
   <div class="workout-week">
     <%= link_to gravatar_for(user), user_path(user.id) %> <br>
     Username: <%= user.username %> <br>
@@ -12,18 +17,44 @@
 
     <%= link_to 'Destroy', user, method: :delete, class: "tiny button", data: { confirm: 'Are you sure?' } %>
 
-  </div>
+
+  <% if count.even? %>
+    <div class="row">
   <% end %>
 
-  <div class="workout-week">
+  <div class="small-12 large-6 columns">
+  <br>
+  <%= link_to gravatar_for(user), user_path(user.id) %> <br>
+  <b>Username:</b> <%= user.username %> <br>
+  <b>Email:</b> <%= mail_to "#{user.email}" %> <br>
+  <br>
 
+  <% if current_user == user %>
+    <%= link_to 'Edit', edit_user_path(user), class: "tiny button"  %>
+    <%= link_to 'Destroy', user, method: :delete, class: "tiny button", data: { confirm: 'Are you sure?' } %>
+  <% end %>
 
+  <% unless current_user == user || current_user.friends.include?(user) || current_user.pending_friendships.where(target_id: user).present? %>
+      <a href="#" data-reveal-id="new-friend-container" class="tiny button">Add Friend</a>
+  <% end %>
 
-   <%#= link_to 'New User', new_user_path, class: "button" %>
   </div>
 
-   <div id="new-user-container" class="reveal-modal" data-reveal>
-      <%= render 'form' %>
+  <% if count.even? %>
     </div>
+  <% end %>
 
-    <a href="#" data-reveal-id="new-user-container" class="button"> New User</a>
+  <% count += 1 %>
+
+<% end %>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h5>Invite a friend to join Fit By Friday</h5>
+    <%= form_tag(app_invite_path, method: "post") do %>
+    <%= email_field_tag(:email) %>
+    <%= hidden_field_tag(current_user) %>
+    <%= button_tag("Invite") %>
+    <% end %>
+  </div>
+</div>
