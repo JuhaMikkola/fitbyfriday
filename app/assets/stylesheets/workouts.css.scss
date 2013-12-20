@@ -13,16 +13,31 @@ div#user-list {
 }
 
 div.workout-day {
-  text-align: left;
+  text-align: center;
 }
 
 div.workout {
   border-bottom: 1px solid lightgrey;
-  text-align: left;
+  text-align: center;
 }
 
 div.workout-details {
 
+}
+
+.days {
+  background-color: #1693A5;
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+}
+
+
+.fa {
+padding-top: 40px;
+padding-left: 10px;
 }
 
 
