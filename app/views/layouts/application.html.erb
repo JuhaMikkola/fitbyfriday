@@ -19,7 +19,7 @@
 
   <body>
 
-  <%= render 'layouts/header' %>
+  <%= render 'layouts/header' unless defined? @ignore_header %>
 
   <!-- Content -->
   <section class="main-section">

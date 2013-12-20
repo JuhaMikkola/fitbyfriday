@@ -1,20 +1,22 @@
 
-<section >
+<section class="bg-midnight-blue" >
   <div class="background">&nbsp;</div>
 
   <div class="container">
     <div class="row">
-      <%= image_tag "logo.png" %>
-      <div class="large4">
-        <h3>Fit By Friday</h3>
-        <p>Fit By Friday is an easy and fast way to schedule a workout with friends.</p>
-         <img src="http://inkmonster.net/wp-content/uploads/2013/11/its-friday.jpg">
-<br>
-        <div class="signup">
-          <h3><a href="#" data-reveal-id="new-user-container" class="button animated shake ">Sign Up</a> <br>or  <br><%= link_to "Login", login_path %></h3>
+      <%= image_tag "logo.png", class: " animated bounce logo2" %>
+
+        <p>The fast way to schedule a workout with friends.</p>
+
+           <div class="signup">
+
+          <a href="#" data-reveal-id="new-user-container" class="button tiny">Sign Up</a> or <%= link_to "Login", login_path %>
         </div>
-      </div>
+
+         <%= image_tag "ipone.png", class: 'logoff' %>
+
     </div>
+
   </div>
 
 
