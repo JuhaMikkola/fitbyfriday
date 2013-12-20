@@ -23,19 +23,20 @@
     <%= render 'workouts' %>
   </div>
 
-<div class="panel" id="accountability-score" data-total="<%= @user.received_ratings.where(:confirmed => true).count.to_f %>" data-confirmed="<%= @user.received_ratings.where(:confirmed => false).count.to_f %>">
-  <%= current_user.username %>'s Accountability <br>
-  <% if @user.received_ratings.any? %>
-    <%= ((@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).floor).to_s + "%" %>
-  <% end %>
-</div>
+<% if current_user.received_ratings.any? %>
+  <div class="panel" id="accountability-score" data-total="<%= @user.received_ratings.where(:confirmed => true).count.to_f %>" data-confirmed="<%= @user.received_ratings.where(:confirmed => false).count.to_f %>">
+    <%= current_user.username %>'s Accountability <br>
+    <% if @user.received_ratings.any? %>
+      <%= ((@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).floor).to_s + "%" %>
+    <% end %>
+  </div>
+<% end %>
+
 
 <canvas id="myChart" width="200" height="200"></canvas>
-
-
-  <div id="new-workout-container" class="reveal-modal" data-reveal>
-    <%= render 'new_workout' %>
-  </div>
+<div id="new-workout-container" class="reveal-modal" data-reveal>
+  <%= render 'new_workout' %>
+</div>
 
 
 
