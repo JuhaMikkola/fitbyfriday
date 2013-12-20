@@ -7,17 +7,6 @@
 
 <% @users.each do |user| %>
 
-  <div class="workout-week">
-    <%= link_to gravatar_for(user), user_path(user.id) %> <br>
-    Username: <%= user.username %> <br>
-    Email: <%= user.email %> <br>
-    <br>
-
-    <%= link_to 'Edit', edit_user_path(user), class: "tiny button"  %>
-
-    <%= link_to 'Destroy', user, method: :delete, class: "tiny button", data: { confirm: 'Are you sure?' } %>
-
-
   <% if count.even? %>
     <div class="row">
   <% end %>
