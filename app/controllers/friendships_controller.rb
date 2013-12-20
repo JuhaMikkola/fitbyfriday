@@ -22,7 +22,7 @@ class FriendshipsController < ApplicationController
     @confirmed_friendship = Friendship.new(sender: current_user, target: @friendship.sender, confirmed: true)
 
     if @confirmed_friendship.save && @friendship.update_attribute(:confirmed, true)
-      redirect_to users_path
+      redirect_to workouts_path
     else
       render 'index'
     end

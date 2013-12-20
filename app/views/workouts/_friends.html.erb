@@ -6,10 +6,10 @@
         <h5><%= request.sender.username %> wants to be your friend:</h5>
       </div>
       <div class="small-3 columns">
-        <h5><%= link_to 'Confirm', confirm_friendship_path(request), method: :post %><h5>
+        <h6><%= link_to 'Confirm', confirm_friendship_path(request), method: :post %><h6>
       </div>
         <div class="small-3 columns">
-          <h5><%= link_to 'Decline', decline_friendship_path(request), method: :post %></h5>
+          <h6><%= link_to 'Decline', decline_friendship_path(request), method: :post %></h6>
         </div>
       </div>
     </div>

@@ -36,7 +36,6 @@ class WorkoutsController < ApplicationController
       # end
 
       if request.xhr?
-        @user = current_user
         @workouts = current_user.workouts.where(start_date: Date.today..(Date.today + 7)).sort_by(&:start_date)
         @workouts_by_day = @workouts.group_by { |w| w.start_date.to_date }
 

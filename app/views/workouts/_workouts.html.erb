@@ -1,39 +1,38 @@
 
-<% if @user.workouts.any? %>
+<% if current_user.workouts.any? %>
 
-<div class="workout-week">
-<!--     <h3><b>This weeks workouts</b></h3>
- -->
+  <div class="workout-week">
     <% @workouts_by_day.each do |w| %>
-      <div class="row">
+      <div class="workout-date row">
         <div class="small-12 column workout-day days">
           <h3><time datetime="<%= w[0] %>"><%= w[0].strftime("%A, %b %d") %></time></h3>
         </div>
-      </div>
 
         <% w[1].each do |workout| %>
-        <div class="workout">
-          <div class="row">
+          <div class="workout row">
             <div class="small-12 column">
-              <h3 data-time="<%= workout.start_time.strftime("%H:%M:%S") %>"> <%= link_to workout.activity, workout_path(workout.id) %> </h3>
+              <h3 data-time="<%= workout.start_time.utc.strftime("%H:%M:%S") %>"> <%= link_to workout.activity, workout_path(workout.id) %></h3>
+              <h5 class="workout-details"><%= workout.start_time.utc.strftime("%l:%M%P") %> at <%= workout.location.capitalize %></h5>
             </div>
           </div>
-          <div class="row">
-            <div class="small-12 column workout-details">
-              <h5><%= workout.start_time.strftime("%e:%M%P") %> at <%= workout.location.capitalize %></h5>
-            </div>
-          </div>
-        </div>
         <% end %>
       </div>
     <% end %>
+  </div>
 
   <% else %>
-    <h3>No Workouts Scheduled</h3>
+
+<br>
+<br>
+<article>
+<div class="quote">
+    Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. <br>
+   <small>- Thomas A. Edison</small>
+</div>
+
+ <article>
 
   <% end %>
 
 
 
-
-</div>
