@@ -16,7 +16,9 @@
 
 <div class="panel" id="accountability-score" data-total="<%= @user.received_ratings.where(:confirmed => true).count.to_f %>" data-confirmed="<%= @user.received_ratings.where(:confirmed => false).count.to_f %>">
   Accountability Score <br>
-  <%= ((@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).floor).to_s + "%" %>
+  <% if @user.received_ratings.any? %>
+    <%= ((@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).floor).to_s + "%" %>
+  <% end %>
 </div>
 
 <canvas id="myChart" width="200" height="200"></canvas>
@@ -79,7 +81,9 @@
   <% end %>
 <% end %>
 
+<% if current_user == @user %>
 <%= link_to 'Edit', edit_user_path(@user), {class: "tiny button", :'data-reveal-id' => "edit-user-container"} %>
+<% end %>
 <%= link_to 'Back', users_path, class: "tiny button" %>
 
 <div id="edit-user-container" class="reveal-modal" data-reveal>

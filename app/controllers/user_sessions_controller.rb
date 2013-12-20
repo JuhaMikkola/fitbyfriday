@@ -14,9 +14,10 @@ class UserSessionsController < ApplicationController
       render action: "new"
     end
   end
-  
+
   def destroy
     logout
-    redirect_to(:workouts, notice: 'Logged out!')
+    redirect_to(:root, notice: 'Logged out!')
   end
+
 end

@@ -20,8 +20,12 @@
 
   <% if current_user == user %>
     <%= link_to 'Edit', edit_user_path(user), class: "tiny button"  %>
-      <%= link_to 'Destroy', user, method: :delete, class: "tiny button", data: { confirm: 'Are you sure?' } %>
-    <% end %>
+    <%= link_to 'Destroy', user, method: :delete, class: "tiny button", data: { confirm: 'Are you sure?' } %>
+  <% end %>
+
+  <% unless current_user == user || current_user.friends.include?(user) || current_user.pending_friendships.where(target_id: user).present? %>
+      <a href="#" data-reveal-id="new-friend-container" class="tiny button">Add Friend</a>
+  <% end %>
 
   </div>
 
@@ -31,4 +35,15 @@
 
   <% count += 1 %>
 
-  <% end %>
+<% end %>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h5>Invite a friend to join Fit By Friday</h5>
+    <%= form_tag(app_invite_path, method: "post") do %>
+    <%= email_field_tag(:email) %>
+    <%= hidden_field_tag(current_user) %>
+    <%= button_tag("Invite") %>
+    <% end %>
+  </div>
+</div>
