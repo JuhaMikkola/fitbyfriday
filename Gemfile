@@ -9,6 +9,8 @@ gem 'sorcery'
 gem 'foundation-rails'
 gem 'chart-js-rails'
 gem 'foundation-icons-sass-rails'
+gem "animate-rails"
+gem "font-awesome-rails"
 
 group :development, :test do
 
