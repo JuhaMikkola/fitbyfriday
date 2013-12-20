@@ -24,6 +24,7 @@ Fitbyfriday::Application.routes.draw do
 
   resources :friendships do
     post 'confirm', on: :member
+    delete 'decline', on: :member
   end
 
 

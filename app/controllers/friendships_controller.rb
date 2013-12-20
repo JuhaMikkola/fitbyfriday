@@ -28,6 +28,13 @@ class FriendshipsController < ApplicationController
     end
   end
 
+  def decline
+    @friendship = Friendship.find(params[:id])
+    if @friendship.update_attribute(:confirmed, false)
+      redirect_to workouts_path
+    end
+  end
+
   private
   def friendship_params
     params.require(:friendship).permit(:target_id, :id)
