@@ -1,7 +1,7 @@
 <% if @user.sent_ratings.where(:confirmed => nil).any? %>
   <div class="rating-requests">
     <% @user.sent_ratings.where(confirmed: nil).each do |rating| %>
-    <div class="rating">
+    <!-- <div class="rating"> -->
       <div class="row request">
         <div class="small-6 columns">
           <h5>Was <%= rating.rated.username %> at <%= rating.workout.activity %>? </h5>
@@ -13,7 +13,7 @@
           <h6><%= link_to 'No', confirm_rating_path(rating), data: {rating_confirmation: false}, class: "confirm-rating" %></h6>
         </div>
         </div>
-    </div>
+    <!-- </div> -->
   </div>
     <% end %>
   </div>
