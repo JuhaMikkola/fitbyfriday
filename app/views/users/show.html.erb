@@ -30,6 +30,7 @@
 
 <% if current_user == @user %>
   <p>This is your profile!</p>
+  <p><a href="http://en.gravatar.com">Get your own Avatar</a></p>
 
   <!-- Add Friend Model -->
 <% else %>
@@ -83,11 +84,14 @@
   <% end %>
 <% end %>
 
-<% if current_user == @user %>
+<div class="row">
+  <% if current_user == @user %>
 <%= link_to 'Edit', edit_user_path(@user), {class: "tiny button", :'data-reveal-id' => "edit-user-container"} %>
 <% end %>
 <%= link_to 'Back', users_path, class: "tiny button" %>
+<div>
 
 <div id="edit-user-container" class="reveal-modal" data-reveal>
   <%= render 'form' %>
 </div>
+

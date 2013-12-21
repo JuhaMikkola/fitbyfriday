@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
   has_many :sent_ratings, :class_name => "Rating", foreign_key: "rater_id"
   has_many :received_ratings, :class_name => "Rating", foreign_key: "rated_id"
 
+  before_create :ensure_email_downcase
+
   def unconfirmed_friendships
     (sent_friendships + target_friendships)
   end
@@ -62,5 +64,8 @@ class User < ActiveRecord::Base
     return false
   end
 
+  def ensure_email_downcase
+    self.email = email.downcase
+  end
 
 end
