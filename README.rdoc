@@ -1,28 +1,11 @@
-== README
+== FIT BY FRIDAY
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fit By Friday is an application
 
-Things you may want to cover:
+Concept by Jo. Created by Moin, Greg and Juha.
 
-* Ruby version
+KNOWN ISSUES/WORK:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+• Facebook log in does not work
+• Action Mailers (emails) does not work
+• When listing more than two notifications, the third one is not shaded like the others. When clicking Yes or No nothing happens.
