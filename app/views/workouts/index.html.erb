@@ -24,12 +24,15 @@
   </div>
 
 <% if current_user.received_ratings.any? %>
-  <div class="panel" id="accountability-score" data-total="<%= @user.received_ratings.where(:confirmed => true).count.to_f %>" data-confirmed="<%= @user.received_ratings.where(:confirmed => false).count.to_f %>">
-    <%= current_user.username %>'s Accountability <br>
-    <% if @user.received_ratings.any? %>
-      <%= ((@user.received_ratings.where(:confirmed => true).count.to_f / @user.received_ratings.count.to_f * 100).floor).to_s + "%" %>
-    <% end %>
-  </div>
+  <div class="panel" id="accountability-score" data-total="<%= @user.received_ratings.where(confirmed: true).count.to_f %>" data-confirmed="<%= @user.received_ratings.count.to_f - @user.received_ratings.where(confirmed: true).count.to_f %>">
+  Accountability Score <br>
+
+  <div class="pie-center">
+
+  <% if @user.received_ratings.any? %>
+    <%= ((@user.received_ratings.where(confirmed: true).count / @user.received_ratings.count.to_f * 100).floor).to_s + "%" %>
+  <% end %>
+</div>
 <% end %>
 
 
