@@ -109,10 +109,10 @@ Rails.application.config.sorcery.configure do |config|
   # config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
   # config.twitter.user_info_mapping = {:email => "screen_name"}
 
-  config.facebook.key = "743116995702614"
-  config.facebook.secret = "ccfb7d7b7a3950b356bb4742a1cef119"
+  config.facebook.key = "470097366429293"
+  config.facebook.secret = "1c5251d6a053c81bd8920f373c6ff002"
   config.facebook.callback_url = "http://cryptic-springs-3985.herokuapp.com/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = {:email => "email", :name => "name", :username => "username", :hometown => "hometown/name"}
+  config.facebook.user_info_mapping = {:email => "email", :username => "username", :avatar => "picture"}
   config.facebook.access_permissions = ["email", "publish_stream"]
 
   # config.github.key = ""
