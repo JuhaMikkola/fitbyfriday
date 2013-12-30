@@ -112,7 +112,7 @@ Rails.application.config.sorcery.configure do |config|
   config.facebook.key = "470097366429293"
   config.facebook.secret = "1c5251d6a053c81bd8920f373c6ff002"
   config.facebook.callback_url = "http://cryptic-springs-3985.herokuapp.com/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = {:email => "email", :name => "name", :username => "username", :hometown => "hometown/name"}
+  config.facebook.user_info_mapping = {:email => "email", :username => "username", :avatar => "picture"}
   config.facebook.access_permissions = ["email", "publish_stream"]
 
   # config.github.key = ""
