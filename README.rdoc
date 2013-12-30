@@ -1,11 +1,10 @@
-== FIT BY FRIDAY
+== FIT BY FRIDAY ==
 
-Fit By Friday is an application
-
-Concept by Jo. Created by Moin, Greg and Juha.
+Fit By Friday is the fast way to schedule a workout with friends. Concept by Jo. Created by Moin, Greg and Juha.
 
 KNOWN ISSUES/WORK:
 
 • Facebook log in does not work
-• Action Mailers (emails) does not work
+• Action Mailers (emails) do not work. Stretch is to make them text messages.
 • When listing more than two notifications, the third one is not shaded like the others. When clicking Yes or No nothing happens.
+• Create password recovery option for those that forget their password.
